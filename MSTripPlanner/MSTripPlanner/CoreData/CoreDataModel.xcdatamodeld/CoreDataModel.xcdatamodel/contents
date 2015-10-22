@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
+    <entity name="TripEntity" representedClassName="Trip" syncable="YES">
+        <attribute name="tripName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="trips" inverseEntity="UserEntity" syncable="YES"/>
+        <relationship name="waypoints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WaypointEntity" inverseName="trip" inverseEntity="WaypointEntity" syncable="YES"/>
+    </entity>
+    <entity name="UserEntity" representedClassName="User" syncable="YES">
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="trips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TripEntity" inverseName="owner" inverseEntity="TripEntity" syncable="YES"/>
+    </entity>
+    <entity name="WaypointEntity" representedClassName="Waypoint" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TripEntity" inverseName="waypoints" inverseEntity="TripEntity" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TripEntity" positionX="-6149" positionY="-1809" width="128" height="88"/>
+        <element name="UserEntity" positionX="-6372" positionY="-1809" width="128" height="88"/>
+        <element name="WaypointEntity" positionX="-5886" positionY="-1804" width="128" height="103"/>
+    </elements>
+</model>

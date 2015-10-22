@@ -7,17 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		332A1F0B1BD6F42E004FA8A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332A1F0A1BD6F42E004FA8A6 /* CoreData.framework */; };
+		332A1F0F1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332A1F0D1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld */; };
+		332A1F111BD6F5A6004FA8A6 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A1F101BD6F5A6004FA8A6 /* DataController.swift */; };
+		334FC0311BD8BFB30094CA5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FC02F1BD8BFB30094CA5B /* User.swift */; };
+		334FC0371BD8C0DC0094CA5B /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FC0331BD8C0DC0094CA5B /* Trip.swift */; };
+		334FC0391BD8C0DC0094CA5B /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FC0351BD8C0DC0094CA5B /* Waypoint.swift */; };
+		334FC03B1BD8C1EA0094CA5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FC03A1BD8C1EA0094CA5B /* DataHelper.swift */; };
 		3358E7E91BD5AB630060C4CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E7E81BD5AB630060C4CB /* AppDelegate.swift */; };
 		3358E7EE1BD5AB630060C4CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3358E7EC1BD5AB630060C4CB /* Main.storyboard */; };
 		3358E7F01BD5AB630060C4CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3358E7EF1BD5AB630060C4CB /* Assets.xcassets */; };
 		3358E7F31BD5AB630060C4CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3358E7F11BD5AB630060C4CB /* LaunchScreen.storyboard */; };
 		3358E7FE1BD5AB630060C4CB /* MSTripPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E7FD1BD5AB630060C4CB /* MSTripPlannerTests.swift */; };
 		3358E8091BD5AB630060C4CB /* MSTripPlannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E8081BD5AB630060C4CB /* MSTripPlannerUITests.swift */; };
-		3358E81A1BD5AC100060C4CB /* PlannedTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E8191BD5AC100060C4CB /* PlannedTripsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		3358E81C1BD5AC1B0060C4CB /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E81B1BD5AC1B0060C4CB /* AddTripViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		3358E81E1BD5B2550060C4CB /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E81D1BD5B2550060C4CB /* TripDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		3358E8201BD5B3050060C4CB /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E81F1BD5B3050060C4CB /* AddWaypointViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		3358E8221BD5B6300060C4CB /* WaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E8211BD5B6300060C4CB /* WaypointViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		3358E81A1BD5AC100060C4CB /* PlannedTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E8191BD5AC100060C4CB /* PlannedTripsViewController.swift */; };
+		3358E81C1BD5AC1B0060C4CB /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E81B1BD5AC1B0060C4CB /* AddTripViewController.swift */; };
+		3358E81E1BD5B2550060C4CB /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E81D1BD5B2550060C4CB /* TripDetailViewController.swift */; };
+		3358E8201BD5B3050060C4CB /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E81F1BD5B3050060C4CB /* AddWaypointViewController.swift */; };
+		3358E8221BD5B6300060C4CB /* WaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E8211BD5B6300060C4CB /* WaypointViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		332A1F0A1BD6F42E004FA8A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		332A1F0E1BD6F505004FA8A6 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		332A1F101BD6F5A6004FA8A6 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		334FC02F1BD8BFB30094CA5B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		334FC0331BD8C0DC0094CA5B /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		334FC0351BD8C0DC0094CA5B /* Waypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
+		334FC03A1BD8C1EA0094CA5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		3358E7E51BD5AB630060C4CB /* MSTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3358E7E81BD5AB630060C4CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3358E7ED1BD5AB630060C4CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332A1F0B1BD6F42E004FA8A6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,9 +97,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		332A1F0C1BD6F4BA004FA8A6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				332A1F0D1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld */,
+				332A1F101BD6F5A6004FA8A6 /* DataController.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		3358E7DC1BD5AB630060C4CB = {
 			isa = PBXGroup;
 			children = (
+				332A1F0A1BD6F42E004FA8A6 /* CoreData.framework */,
 				3358E7E71BD5AB630060C4CB /* MSTripPlanner */,
 				3358E7FC1BD5AB630060C4CB /* MSTripPlannerTests */,
 				3358E8071BD5AB630060C4CB /* MSTripPlannerUITests */,
@@ -105,6 +130,8 @@
 		3358E7E71BD5AB630060C4CB /* MSTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				33F516B21BD8A58D00144DDC /* Models */,
+				332A1F0C1BD6F4BA004FA8A6 /* CoreData */,
 				3358E8161BD5ABF90060C4CB /* Helpers */,
 				3358E8171BD5ABF90060C4CB /* View Controllers */,
 				3358E8181BD5ABF90060C4CB /* Views */,
@@ -138,6 +165,7 @@
 		3358E8161BD5ABF90060C4CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				334FC03A1BD8C1EA0094CA5B /* DataHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -159,6 +187,16 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		33F516B21BD8A58D00144DDC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				334FC02F1BD8BFB30094CA5B /* User.swift */,
+				334FC0331BD8C0DC0094CA5B /* Trip.swift */,
+				334FC0351BD8C0DC0094CA5B /* Waypoint.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,12 +329,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334FC0371BD8C0DC0094CA5B /* Trip.swift in Sources */,
 				3358E81A1BD5AC100060C4CB /* PlannedTripsViewController.swift in Sources */,
 				3358E7E91BD5AB630060C4CB /* AppDelegate.swift in Sources */,
+				334FC0391BD8C0DC0094CA5B /* Waypoint.swift in Sources */,
 				3358E8201BD5B3050060C4CB /* AddWaypointViewController.swift in Sources */,
+				332A1F0F1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld in Sources */,
 				3358E81E1BD5B2550060C4CB /* TripDetailViewController.swift in Sources */,
+				332A1F111BD6F5A6004FA8A6 /* DataController.swift in Sources */,
 				3358E81C1BD5AC1B0060C4CB /* AddTripViewController.swift in Sources */,
+				334FC03B1BD8C1EA0094CA5B /* DataHelper.swift in Sources */,
 				3358E8221BD5B6300060C4CB /* WaypointViewController.swift in Sources */,
+				334FC0311BD8BFB30094CA5B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +565,7 @@
 				3358E80F1BD5AB630060C4CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3358E8101BD5AB630060C4CB /* Build configuration list for PBXNativeTarget "MSTripPlannerTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +574,7 @@
 				3358E8121BD5AB630060C4CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3358E8131BD5AB630060C4CB /* Build configuration list for PBXNativeTarget "MSTripPlannerUITests" */ = {
 			isa = XCConfigurationList;
@@ -537,8 +583,22 @@
 				3358E8151BD5AB630060C4CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		332A1F0D1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				332A1F0E1BD6F505004FA8A6 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 332A1F0E1BD6F505004FA8A6 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3358E7DD1BD5AB630060C4CB /* Project object */;
 }
