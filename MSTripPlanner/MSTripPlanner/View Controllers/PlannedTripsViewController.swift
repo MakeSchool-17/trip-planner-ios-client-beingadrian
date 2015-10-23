@@ -18,7 +18,8 @@ class PlannedTripsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         
     }
 
@@ -28,9 +29,7 @@ class PlannedTripsViewController: UIViewController {
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+    override func prefersStatusBarHidden() -> Bool { return true }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,5 +44,4 @@ class PlannedTripsViewController: UIViewController {
         
     }
     
-
 }

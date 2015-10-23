@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T9M-vF-EWi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T9M-vF-EWi">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
@@ -149,7 +149,7 @@
                         <viewControllerLayoutGuide type="top" id="TMB-Tt-s2u"/>
                         <viewControllerLayoutGuide type="bottom" id="nRO-eC-mRO"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HnP-98-e5k">
+                    <view key="view" contentMode="scaleToFill" id="HnP-98-e5k" customClass="AddTripView" customModule="MSTripPlanner" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -174,18 +174,21 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-pj-DcJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-pj-DcJ" userLabel="Label">
                                 <rect key="frame" x="109" y="323" width="156.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0Y-zx-UHW">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0Y-zx-UHW" userLabel="Input Field">
                                 <rect key="frame" x="50" y="368" width="275" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="HnP-98-e5k" eventType="editingChanged" id="N7p-Mx-zho"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <animations/>
@@ -201,10 +204,14 @@
                             <constraint firstItem="EkP-9X-GhT" firstAttribute="leading" secondItem="HnP-98-e5k" secondAttribute="leading" id="tDw-hp-sBH"/>
                             <constraint firstItem="p0Y-zx-UHW" firstAttribute="centerX" secondItem="HnP-98-e5k" secondAttribute="centerX" id="w58-fQ-3sS"/>
                         </constraints>
+                        <connections>
+                            <outlet property="textField" destination="p0Y-zx-UHW" id="rqZ-9b-XDC"/>
+                        </connections>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="addBarButtonItem" destination="IOG-su-CoP" id="0xQ-rx-dzw"/>
+                        <outlet property="addTripView" destination="HnP-98-e5k" id="eMA-WE-86h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIr-3z-tD0" userLabel="First Responder" sceneMemberID="firstResponder"/>

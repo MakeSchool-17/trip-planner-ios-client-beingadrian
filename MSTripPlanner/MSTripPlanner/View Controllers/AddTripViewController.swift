@@ -15,6 +15,10 @@ class AddTripViewController: UIViewController {
     // MARK: Properties
     
     @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
+    @IBOutlet var addTripView: AddTripView!
+    
+    // core data
+    let dataHelper = DataHelper()
     
     
     // MARK: Base methods
@@ -34,14 +38,15 @@ class AddTripViewController: UIViewController {
     
     func setup() {
         
+        // set UIView delegate
+        addTripView.delegate = self
+        
         // disable add button until user fills the field
         addBarButtonItem.enabled = false
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+    override func prefersStatusBarHidden() -> Bool { return true }
     
     
     // MARK: Actions
@@ -54,7 +59,28 @@ class AddTripViewController: UIViewController {
     
     @IBAction func addBarButtonPressed(sender: UIBarButtonItem) {
         
-        // insert code here
+        // access user input
+        guard let tripName = addTripView.textField.text else { return }
+        
+        // store trip to core data
+        dataHelper.seedTripWithName(tripName)
+        
+        // dismiss
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+}
+
+extension AddTripViewController: AddTripUIViewDelegate {
+    
+    func textInputIsValid(isValid: Bool) {
+        
+        if isValid {
+            addBarButtonItem.enabled = true
+        } else {
+            addBarButtonItem.enabled = false
+        }
         
     }
     

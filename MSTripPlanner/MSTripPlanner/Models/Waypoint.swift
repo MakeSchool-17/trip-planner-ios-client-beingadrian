@@ -2,7 +2,7 @@
 //  Waypoint.swift
 //  MSTripPlanner
 //
-//  Created by Adrian Wisaksana on 10/21/15.
+//  Created by Adrian Wisaksana on 10/22/15.
 //  Copyright © 2015 BeingAdrian. All rights reserved.
 //
 
@@ -12,11 +12,6 @@ import CoreData
 @objc(Waypoint)
 class Waypoint: NSManagedObject {
 
-    // MARK: Properties
     
-    @NSManaged var latitude: NSNumber?
-    @NSManaged var longitude: NSNumber?
-    @NSManaged var name: String?
-    @NSManaged var trip: Trip?
 
 }
