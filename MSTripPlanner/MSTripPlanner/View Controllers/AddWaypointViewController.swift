@@ -7,29 +7,82 @@
 //
 
 import UIKit
+import MapKit
 
 class AddWaypointViewController: UIViewController {
 
+    // MARK: Properties
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    
+    
+    // MARK: Base methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setup() {
+        
+        // search table view
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
+        
     }
-    */
+    
+    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
+    
+    override func prefersStatusBarHidden() -> Bool { return true }
 
+    
+    // MARK: Actions
+    
+    @IBAction func cancelBarButtonPressed(sender: UIBarButtonItem) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    @IBAction func saveBarButtonPressed(sender: UIBarButtonItem) {
+        
+        // insert code here
+        
+    }
+    
+}
+
+extension AddWaypointViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 50
+        
+    }
+    
+}
+
+extension AddWaypointViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 0
+        
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("PlaceCell") as! PlaceCell
+        
+        return cell
+        
+    }
+    
+    
+    
 }

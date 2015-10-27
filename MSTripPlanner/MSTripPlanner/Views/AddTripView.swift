@@ -23,7 +23,7 @@ class AddTripView: UIView {
         
         let inputTextIsValid = sender.text?.characters.count != 0
     
-        delegate?.textInputIsValid(inputTextIsValid)
+        delegate?.textInputIsValid(self, isValid: inputTextIsValid)
         
     }
 
@@ -31,6 +31,6 @@ class AddTripView: UIView {
 
 protocol AddTripUIViewDelegate {
     
-    func textInputIsValid(isValid: Bool) -> Void
+    func textInputIsValid(addTripView: AddTripView, isValid: Bool) -> Void
     
 }

@@ -26,7 +26,11 @@
 		3358E81E1BD5B2550060C4CB /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E81D1BD5B2550060C4CB /* TripDetailViewController.swift */; };
 		3358E8201BD5B3050060C4CB /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E81F1BD5B3050060C4CB /* AddWaypointViewController.swift */; };
 		3358E8221BD5B6300060C4CB /* WaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E8211BD5B6300060C4CB /* WaypointViewController.swift */; };
+		338C04B81BDFEE90003D74C6 /* WaypointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C04B71BDFEE90003D74C6 /* WaypointCell.swift */; };
+		338C04BA1BDFF64E003D74C6 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C04B91BDFF64E003D74C6 /* PlaceCell.swift */; };
+		3395466D1BDEBA1700E0F10C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3395466C1BDEBA1700E0F10C /* MapKit.framework */; };
 		33FC21261BDAB23D00109565 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FC21251BDAB23D00109565 /* AddTripView.swift */; };
+		33FC21291BDAD42100109565 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FC21281BDAD42100109565 /* TripCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +76,11 @@
 		3358E81D1BD5B2550060C4CB /* TripDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
 		3358E81F1BD5B3050060C4CB /* AddWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		3358E8211BD5B6300060C4CB /* WaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointViewController.swift; sourceTree = "<group>"; };
+		338C04B71BDFEE90003D74C6 /* WaypointCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointCell.swift; sourceTree = "<group>"; };
+		338C04B91BDFF64E003D74C6 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		3395466C1BDEBA1700E0F10C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		33FC21251BDAB23D00109565 /* AddTripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
+		33FC21281BDAD42100109565 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3395466D1BDEBA1700E0F10C /* MapKit.framework in Frameworks */,
 				332A1F0B1BD6F42E004FA8A6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +122,7 @@
 		3358E7DC1BD5AB630060C4CB = {
 			isa = PBXGroup;
 			children = (
+				3395466C1BDEBA1700E0F10C /* MapKit.framework */,
 				332A1F0A1BD6F42E004FA8A6 /* CoreData.framework */,
 				3358E7E71BD5AB630060C4CB /* MSTripPlanner */,
 				3358E7FC1BD5AB630060C4CB /* MSTripPlannerTests */,
@@ -134,6 +144,7 @@
 		3358E7E71BD5AB630060C4CB /* MSTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				33FC21271BDAD40B00109565 /* Cells */,
 				33F516B21BD8A58D00144DDC /* Models */,
 				332A1F0C1BD6F4BA004FA8A6 /* CoreData */,
 				3358E8161BD5ABF90060C4CB /* Helpers */,
@@ -205,6 +216,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		33FC21271BDAD40B00109565 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				33FC21281BDAD42100109565 /* TripCell.swift */,
+				338C04B71BDFEE90003D74C6 /* WaypointCell.swift */,
+				338C04B91BDFF64E003D74C6 /* PlaceCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,6 +293,11 @@
 				TargetAttributes = {
 					3358E7E41BD5AB630060C4CB = {
 						CreatedOnToolsVersion = 7.0.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					3358E7F81BD5AB630060C4CB = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -337,11 +363,14 @@
 			files = (
 				3358E81A1BD5AC100060C4CB /* PlannedTripsViewController.swift in Sources */,
 				3358E7E91BD5AB630060C4CB /* AppDelegate.swift in Sources */,
+				338C04BA1BDFF64E003D74C6 /* PlaceCell.swift in Sources */,
 				330456911BD95C0300B4EA34 /* Waypoint.swift in Sources */,
 				33FC21261BDAB23D00109565 /* AddTripView.swift in Sources */,
+				33FC21291BDAD42100109565 /* TripCell.swift in Sources */,
 				3358E8201BD5B3050060C4CB /* AddWaypointViewController.swift in Sources */,
 				332A1F0F1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld in Sources */,
 				3358E81E1BD5B2550060C4CB /* TripDetailViewController.swift in Sources */,
+				338C04B81BDFEE90003D74C6 /* WaypointCell.swift in Sources */,
 				330456921BD95C0300B4EA34 /* Trip+CoreDataProperties.swift in Sources */,
 				330456931BD95C0300B4EA34 /* Trip.swift in Sources */,
 				332A1F111BD6F5A6004FA8A6 /* DataController.swift in Sources */,

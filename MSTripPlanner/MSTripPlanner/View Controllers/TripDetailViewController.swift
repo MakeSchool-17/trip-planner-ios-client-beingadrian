@@ -9,27 +9,95 @@
 import UIKit
 
 class TripDetailViewController: UIViewController {
+    
+    // MARK: Properties
+    
+    @IBOutlet weak var tripDetailNavigationItem: UINavigationItem!
+    @IBOutlet weak var waypointsTableView: UITableView!
+    
+    var trip: Trip?
+    
+    // core data
+    let dataHelper = DataHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        setup()
+        
+        if let trip = trip {
+            tripDetailNavigationItem.title = trip.name
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setup() {
+        
+        // table view setup
+        waypointsTableView.delegate = self
+        waypointsTableView.dataSource = self
+        
     }
-    */
 
+    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
+    
+    override func prefersStatusBarHidden() -> Bool { return true }
+
+    
+    // MARK: Actions
+    
+    @IBAction func addButtonPressed(sender: UIBarButtonItem) {
+        
+        performSegueWithIdentifier("ToAddWaypoint", sender: self)
+    
+    }
+    
 }
+
+extension TripDetailViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 50
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // insert code here
+        
+    }
+    
+    
+}
+
+extension TripDetailViewController: UITableViewDataSource {
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     
+        return dataHelper.fetchWaypoints().count
+        
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("WaypointCell") as! WaypointCell
+        
+        return cell
+        
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header = view as! UITableViewHeaderFooterView
+        
+        header.textLabel?.text = "Test"
+        
+    }
+    
+}
+
+
+
+
+

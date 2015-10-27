@@ -38,7 +38,6 @@ class AddTripViewController: UIViewController {
     
     func setup() {
         
-        // set UIView delegate
         addTripView.delegate = self
         
         // disable add button until user fills the field
@@ -63,9 +62,8 @@ class AddTripViewController: UIViewController {
         guard let tripName = addTripView.textField.text else { return }
         
         // store trip to core data
-        dataHelper.seedTripWithName(tripName)
+        dataHelper.addTripWithName(tripName)
         
-        // dismiss
         dismissViewControllerAnimated(true, completion: nil)
         
     }
@@ -74,7 +72,7 @@ class AddTripViewController: UIViewController {
 
 extension AddTripViewController: AddTripUIViewDelegate {
     
-    func textInputIsValid(isValid: Bool) {
+    func textInputIsValid(addTripView: AddTripView, isValid: Bool) {
         
         if isValid {
             addBarButtonItem.enabled = true

@@ -32,7 +32,7 @@ class DataHelper {
     
     // MARK: - Trip methods
     
-    func seedTripWithName(name: String) {
+    func addTripWithName(name: String) {
         
         // setup entity
         let tripEntity = NSEntityDescription.insertNewObjectForEntityForName(TripEntityName, inManagedObjectContext: moc) as! Trip
@@ -105,7 +105,7 @@ class DataHelper {
     
     // MARK: - Waypoint methods
     
-    func seedWaypointWithName(name: String, longitude: Float, latitude: Float) -> Waypoint {
+    func addWaypointWithName(name: String, longitude: Float, latitude: Float) -> Waypoint {
         
         let waypointEntity = NSEntityDescription.insertNewObjectForEntityForName(WaypointEntityName, inManagedObjectContext: moc) as! Waypoint
         
@@ -150,7 +150,7 @@ class DataHelper {
     
     }
     
-    func fetchWaypoints() -> [Waypoint]? {
+    func fetchWaypoints() -> [Waypoint] {
         
         let waypointsFetchRequest = NSFetchRequest(entityName: WaypointEntityName)
         
@@ -162,7 +162,6 @@ class DataHelper {
             fatalError("Failed to fetch waypoints: \(error)")
         }
         
-        return nil
     }
     
     func updateWaypointWithObjectID(objectID: String, name: String?, longitude: Float?, latitude: Float?) {
