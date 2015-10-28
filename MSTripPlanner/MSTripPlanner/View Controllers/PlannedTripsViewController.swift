@@ -93,7 +93,7 @@ extension PlannedTripsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if editingStyle == .Delete {
+        if (editingStyle == .Delete) {
             
             let tripToDelete = trips[indexPath.row]
             
@@ -101,6 +101,8 @@ extension PlannedTripsViewController: UITableViewDelegate {
             DataHelper.sharedInstance.deleteTripWithObjectID(tripToDelete.objectID)
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            
+            trips = DataHelper.sharedInstance.fetchTrips()
         }
         
     }

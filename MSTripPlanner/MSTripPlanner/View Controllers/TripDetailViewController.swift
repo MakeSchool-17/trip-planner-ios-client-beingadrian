@@ -97,6 +97,8 @@ extension TripDetailViewController: UITableViewDelegate {
             // delete waypoint from core data
             DataHelper.sharedInstance.deleteWaypointWithID(waypointToDelete.objectID)
             
+            waypoints = trip.waypoints?.allObjects as! [Waypoint]
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
             
         }
@@ -109,7 +111,7 @@ extension TripDetailViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        return DataHelper.sharedInstance.fetchWaypoints().count
+        return waypoints.count
         
     }
     

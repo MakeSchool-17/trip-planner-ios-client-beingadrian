@@ -116,6 +116,9 @@ extension AddWaypointViewController: UITableViewDelegate {
         // set search bar text
         searchBar.text = predictedPlace.attributedFullText.string
         
+        // remove responder
+        searchBar.resignFirstResponder()
+        
         searchTableView.hidden = true
         
         mapViewDecorator.goToLocationWithPlaceID(predictedPlaceID)
@@ -170,5 +173,3 @@ extension AddWaypointViewController: UISearchBarDelegate {
     }
     
 }
-
-

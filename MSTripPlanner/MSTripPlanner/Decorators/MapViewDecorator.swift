@@ -60,7 +60,7 @@ class MapViewDecorator {
         let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         
         let mapCamera = MKMapCamera(lookingAtCenterCoordinate: coordinate, fromEyeCoordinate: coordinate, eyeAltitude: 10000)
-        self.mapView.setCamera(mapCamera, animated: true)
+        self.mapView.setCamera(mapCamera, animated: false)
         
         // add pin
         let pin = MKPointAnnotation()

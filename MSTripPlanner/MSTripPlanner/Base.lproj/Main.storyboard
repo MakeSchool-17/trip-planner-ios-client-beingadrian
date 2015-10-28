@@ -204,14 +204,14 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-pj-DcJ" userLabel="Label">
-                                <rect key="frame" x="109" y="323" width="156.5" height="20.5"/>
+                                <rect key="frame" x="109" y="283.5" width="156.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0Y-zx-UHW" userLabel="Input Field">
-                                <rect key="frame" x="50" y="368" width="275" height="30"/>
+                                <rect key="frame" x="50" y="328.5" width="275" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -224,7 +224,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EkP-9X-GhT" firstAttribute="top" secondItem="TMB-Tt-s2u" secondAttribute="bottom" id="044-3y-KdT"/>
-                            <constraint firstItem="SGB-pj-DcJ" firstAttribute="centerY" secondItem="HnP-98-e5k" secondAttribute="centerY" id="5Ry-bh-7ey"/>
+                            <constraint firstItem="SGB-pj-DcJ" firstAttribute="centerY" secondItem="HnP-98-e5k" secondAttribute="centerY" constant="-40" id="5Ry-bh-7ey"/>
                             <constraint firstItem="p0Y-zx-UHW" firstAttribute="top" secondItem="SGB-pj-DcJ" secondAttribute="bottom" constant="24" id="8MO-bp-Whm"/>
                             <constraint firstItem="SGB-pj-DcJ" firstAttribute="centerX" secondItem="HnP-98-e5k" secondAttribute="centerX" id="AIf-wH-2eH"/>
                             <constraint firstItem="p0Y-zx-UHW" firstAttribute="leading" secondItem="HnP-98-e5k" secondAttribute="leading" constant="50" id="Jxt-11-IBW"/>
