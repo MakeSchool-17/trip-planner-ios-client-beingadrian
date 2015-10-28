@@ -7,29 +7,38 @@
 //
 
 import UIKit
+import MapKit
+
 
 class WaypointViewController: UIViewController {
 
+    // MARK: Properties
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var mapViewDecorator: MapViewDecorator?
+    var waypoint: Waypoint?
+    
+    
+    // MARK: Base methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapViewDecorator = MapViewDecorator(mapView: mapView)
+        
+        // go to location
+        if let waypoint = waypoint {
+            let latitude = Double(waypoint.latitude!)
+            let longitude = Double(waypoint.longitude!)
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            mapViewDecorator?.goToLocationWithCoordinate(coordinate)
+        }
 
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    override func prefersStatusBarHidden() -> Bool { return true }
 
 }

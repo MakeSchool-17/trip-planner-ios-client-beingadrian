@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import GoogleMaps
+
 
 class AddWaypointViewController: UIViewController {
 
@@ -17,14 +19,29 @@ class AddWaypointViewController: UIViewController {
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    var mapViewDecorator: MapViewDecorator!
+    var matchedPlaces: [GMSAutocompletePrediction] = []
+    var selectedPlace: GMSPlace?
+    
+    // core data
+    let dataHelper = DataHelper()
+    var trip: Trip?
     
     
     // MARK: Base methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setup()
+        
+        mapViewDecorator = MapViewDecorator(mapView: mapView)
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        mapViewDecorator.goToCurrentPlace()
         
     }
     
@@ -33,6 +50,12 @@ class AddWaypointViewController: UIViewController {
         // search table view
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        
+        // search bar
+        searchBar.delegate = self
+        
+        searchTableView.hidden = true
+        
         
     }
     
@@ -51,17 +74,54 @@ class AddWaypointViewController: UIViewController {
     
     @IBAction func saveBarButtonPressed(sender: UIBarButtonItem) {
         
-        // insert code here
-        
+        // get place details for waypoint
+        if let place = selectedPlace {
+            let waypointName = place.name
+            let waypointLongitude = Float(place.coordinate.longitude)
+            let waypointLatitude = Float(place.coordinate.latitude)
+            
+            // add waypoint to core data
+            let waypoint = dataHelper.addWaypointWithName(waypointName, longitude: waypointLongitude, latitude: waypointLatitude)
+            
+            // create relationship
+            if let trip = trip {
+                let associatedTrip = dataHelper.fetchTripWithObjectID(trip.objectID)
+                waypoint.trip = associatedTrip
+                
+                do {
+                    try dataHelper.moc.save()
+                } catch {
+                    fatalError("Erro saving relationship: \(error)")
+                }
+            }
+            
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    
     }
     
 }
 
 extension AddWaypointViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        return 50
+        let predictedPlace = matchedPlaces[indexPath.row]
+        let predictedPlaceID = predictedPlace.placeID
+        
+        // assign selectedPlace with the predicted place by getting the place initially
+        MapHelper.getPlaceByID(predictedPlaceID) {
+            (place) in
+            
+            self.selectedPlace = place
+        }
+        
+        // set search bar text
+        searchBar.text = predictedPlace.attributedFullText.string
+        
+        searchTableView.hidden = true
+        
+        mapViewDecorator.goToLocationWithPlaceID(predictedPlaceID)
         
     }
     
@@ -71,18 +131,47 @@ extension AddWaypointViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0
+        return matchedPlaces.count
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let place = matchedPlaces[indexPath.row]
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("PlaceCell") as! PlaceCell
+        
+        cell.placeNameLabel.text = place.attributedFullText.string
         
         return cell
         
     }
     
+}
+
+extension AddWaypointViewController: UISearchBarDelegate {
     
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        
+        searchTableView.hidden = false
+        
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.characters.count > 0 {
+            MapHelper.getPlacesSearchResults(searchText) {
+                (results) in
+                self.matchedPlaces = results
+            }
+        } else {
+            matchedPlaces = []
+        }
+        
+        searchTableView.reloadData()
+        
+    }
     
 }
+
+

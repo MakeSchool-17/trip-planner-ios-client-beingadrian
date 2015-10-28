@@ -293,7 +293,7 @@
                                                 <action selector="cancelBarButtonPressed:" destination="8T0-xo-7Q7" id="0tH-Kn-B3W"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Add" id="uK1-ZZ-e74">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="uK1-ZZ-e74">
                                             <connections>
                                                 <action selector="saveBarButtonPressed:" destination="8T0-xo-7Q7" id="jcc-pR-X5A"/>
                                             </connections>
@@ -314,12 +314,9 @@
                                 <animations/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dta-7q-bZF" userLabel="Search Table View">
-                                <rect key="frame" x="0.0" y="88" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="579"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="wAj-9m-FkN"/>
-                                </constraints>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceCell" rowHeight="50" id="wTk-dA-MbQ" customClass="PlaceCell" customModule="MSTripPlanner" customModuleProvider="target">
@@ -330,9 +327,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRd-YA-S2j" userLabel="Place Name Label">
-                                                    <rect key="frame" x="30" y="14.5" width="88" height="20.5"/>
+                                                    <rect key="frame" x="30" y="16" width="315" height="17"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -341,6 +338,7 @@
                                             <constraints>
                                                 <constraint firstItem="YRd-YA-S2j" firstAttribute="leading" secondItem="YF6-UL-lhU" secondAttribute="leading" constant="30" id="Mlh-4t-N7A"/>
                                                 <constraint firstItem="YRd-YA-S2j" firstAttribute="centerY" secondItem="YF6-UL-lhU" secondAttribute="centerY" id="NWI-Zy-ZlZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="YRd-YA-S2j" secondAttribute="trailing" constant="30" id="tcn-or-Dff"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -359,6 +357,7 @@
                             <constraint firstAttribute="trailing" secondItem="5e7-Fq-dJ3" secondAttribute="trailing" id="6AC-Zk-smK"/>
                             <constraint firstItem="QiB-qz-dZh" firstAttribute="top" secondItem="Ull-gc-M0J" secondAttribute="bottom" id="9oc-8j-4dk"/>
                             <constraint firstItem="5e7-Fq-dJ3" firstAttribute="top" secondItem="QiB-qz-dZh" secondAttribute="bottom" id="GsM-5u-x8Y"/>
+                            <constraint firstItem="wY6-kt-oX2" firstAttribute="top" secondItem="dta-7q-bZF" secondAttribute="bottom" id="JnT-r5-ANs"/>
                             <constraint firstItem="wY6-kt-oX2" firstAttribute="top" secondItem="ekj-rT-WUD" secondAttribute="bottom" id="ODw-fU-0U5"/>
                             <constraint firstItem="ekj-rT-WUD" firstAttribute="leading" secondItem="2Md-CN-mUd" secondAttribute="leading" id="TV0-32-a3h"/>
                             <constraint firstItem="wY6-kt-oX2" firstAttribute="top" secondItem="dta-7q-bZF" secondAttribute="bottom" id="eQp-yk-OPZ"/>
@@ -380,7 +379,6 @@
                         <outlet property="mapView" destination="ekj-rT-WUD" id="Zgp-eY-jj4"/>
                         <outlet property="searchBar" destination="5e7-Fq-dJ3" id="RQw-xn-74X"/>
                         <outlet property="searchTableView" destination="dta-7q-bZF" id="w9R-8D-sCb"/>
-                        <outlet property="tableViewHeightConstraint" destination="wAj-9m-FkN" id="NuL-qn-2VQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBG-oi-7Sn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -415,6 +413,9 @@
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="mapView" destination="dhj-Ju-0UF" id="zXw-Ml-fD4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ges-sD-Lty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

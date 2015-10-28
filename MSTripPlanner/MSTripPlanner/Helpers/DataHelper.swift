@@ -50,28 +50,18 @@ class DataHelper {
         
     }
     
-    func fetchTripWithObjectID(objectID: String) -> Trip? {
+    func fetchTripWithObjectID(objectID: NSManagedObjectID) -> Trip? {
         
-        // define fetch request
-        let tripFetchRequest = NSFetchRequest(entityName: TripEntityName)
-        
-        // objectID predicate
-        let predicate = NSPredicate(format: "objectID == '\(objectID)'")
-        
-        // set predicate to request
-        tripFetchRequest.predicate = predicate
-        
-        // request
         do {
-            let fetchedTrips = try moc.executeFetchRequest(tripFetchRequest) as! [Trip]
-            if let fetchedTrip = fetchedTrips.first {
-                return fetchedTrip
+            if let trip = try moc.existingObjectWithID(objectID) as? Trip {
+                return trip
+            } else {
+                return nil
             }
         } catch {
-            fatalError("Failed to fetch trips: \(error)")
+            fatalError("Failed to fetch trip: \(error)")
         }
         
-        return nil
     }
     
     func fetchTrips() -> [Trip] {
@@ -87,7 +77,7 @@ class DataHelper {
         
     }
     
-    func deleteTripWithObjectID(objectID: String) {
+    func deleteTripWithObjectID(objectID: NSManagedObjectID) {
         
         // fetch trip to delete
         guard let tripToDelete = fetchTripWithObjectID(objectID) else { return }
@@ -125,28 +115,17 @@ class DataHelper {
         return waypointEntity
     }
     
-    func fetchWaypointWithObjectID(objectID: String) -> Waypoint? {
+    func fetchWaypointWithObjectID(objectID: NSManagedObjectID) -> Waypoint? {
         
-        // define fetch request
-        let waypointFetchRequest = NSFetchRequest(entityName: WaypointEntityName)
-        
-        // objectID predicate
-        let predicate = NSPredicate(format: "objectID == '\(objectID)'")
-        
-        // set predicate to request
-        waypointFetchRequest.predicate = predicate
-        
-        // request
         do {
-            let fetchedWaypoints = try moc.executeFetchRequest(waypointFetchRequest) as! [Waypoint]
-            if let fetchedWaypoint = fetchedWaypoints.first {
-                return fetchedWaypoint
+            if let waypoint = try moc.existingObjectWithID(objectID) as? Waypoint {
+                return waypoint
+            } else {
+                return nil
             }
         } catch {
-            fatalError("Failed to fetch trips: \(error)")
+            fatalError("Error fetching waypoint with id: \(error)")
         }
-        
-        return nil
     
     }
     
@@ -164,7 +143,7 @@ class DataHelper {
         
     }
     
-    func updateWaypointWithObjectID(objectID: String, name: String?, longitude: Float?, latitude: Float?) {
+    func updateWaypointWithObjectID(objectID: NSManagedObjectID, name: String?, longitude: Float?, latitude: Float?) {
         
         guard let waypointToUpdate = fetchWaypointWithObjectID(objectID) else { return }
         
@@ -184,7 +163,7 @@ class DataHelper {
         
     }
     
-    func deleteWaypointWithID(objectID: String) {
+    func deleteWaypointWithID(objectID: NSManagedObjectID) {
         
         // fetch waypoint to delete
         guard let waypointToDelete = fetchWaypointWithObjectID(objectID) else { return }

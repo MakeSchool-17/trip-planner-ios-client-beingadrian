@@ -15,27 +15,56 @@ class TripDetailViewController: UIViewController {
     @IBOutlet weak var tripDetailNavigationItem: UINavigationItem!
     @IBOutlet weak var waypointsTableView: UITableView!
     
-    var trip: Trip?
+    var trip: Trip!
     
     // core data
     let dataHelper = DataHelper()
+    var waypoints: [Waypoint] = []
+    var selectedWaypoint: Waypoint?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setup()
         
-        if let trip = trip {
-            tripDetailNavigationItem.title = trip.name
-        }
+        tripDetailNavigationItem.title = trip.name
+        
+        // override trip
+        trip = dataHelper.fetchTripWithObjectID(trip.objectID)
+        
+        // get waypoints
+        dataHelper.moc.refreshAllObjects()
+        waypoints = trip.waypoints?.allObjects as! [Waypoint]
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        // update waypoints array after adding waypoint
+        dataHelper.moc.refreshAllObjects()
+        waypoints = trip.waypoints?.allObjects as! [Waypoint]
+        waypointsTableView.reloadData()
         
     }
     
     func setup() {
         
-        // table view setup
+        // waypoints table view setup
         waypointsTableView.delegate = self
         waypointsTableView.dataSource = self
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let waypointViewController = segue.destinationViewController as? WaypointViewController {
+            waypointViewController.waypoint = selectedWaypoint
+        }
+        
+        if let addWaypointViewController = segue.destinationViewController as? AddWaypointViewController {
+            addWaypointViewController.trip = trip
+        }
         
     }
 
@@ -56,15 +85,11 @@ class TripDetailViewController: UIViewController {
 
 extension TripDetailViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        return 50
-        
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        // insert code here
+        selectedWaypoint = waypoints[indexPath.row]
+        
+        performSegueWithIdentifier("ToWaypoint", sender: self)
         
     }
     
@@ -75,23 +100,19 @@ extension TripDetailViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        return dataHelper.fetchWaypoints().count
+        return waypoints.count
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let waypoint = waypoints[indexPath.row]
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("WaypointCell") as! WaypointCell
         
+        cell.waypointNameLabel.text = waypoint.name
+        
         return cell
-        
-    }
-    
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
-        let header = view as! UITableViewHeaderFooterView
-        
-        header.textLabel?.text = "Test"
         
     }
     
