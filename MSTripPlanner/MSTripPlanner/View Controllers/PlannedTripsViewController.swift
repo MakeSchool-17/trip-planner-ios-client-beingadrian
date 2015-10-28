@@ -14,9 +14,6 @@ class PlannedTripsViewController: UIViewController {
     
     @IBOutlet weak var plannedTripsTableView: UITableView!
     
-    // core data
-    let dataHelper = DataHelper()
-    
     var trips: [Trip] = []
     var selectedTrip: Trip?
     
@@ -28,12 +25,14 @@ class PlannedTripsViewController: UIViewController {
         
         setup()
         
+        // initial trips retrieval
+        trips = DataHelper.sharedInstance.fetchTrips()
     }
     
     override func viewDidAppear(animated: Bool) {
         
-        // access trips (to update trips)
-        trips = dataHelper.fetchTrips()
+        // update trips
+        trips = DataHelper.sharedInstance.fetchTrips()
         
         // reload table view to sync new data after adding trip
         plannedTripsTableView.reloadData()
@@ -43,7 +42,7 @@ class PlannedTripsViewController: UIViewController {
     func setup() {
         
         // access trips (initial)
-        trips = dataHelper.fetchTrips()
+        trips = DataHelper.sharedInstance.fetchTrips()
         
         // table view
         plannedTripsTableView.delegate = self
@@ -92,13 +91,27 @@ extension PlannedTripsViewController: UITableViewDelegate {
         
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
+            
+            let tripToDelete = trips[indexPath.row]
+            
+            // delete from core data
+            DataHelper.sharedInstance.deleteTripWithObjectID(tripToDelete.objectID)
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+        }
+        
+    }
+    
 }
 
 extension PlannedTripsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return dataHelper.fetchTrips().count
+        return DataHelper.sharedInstance.fetchTrips().count
         
     }
     

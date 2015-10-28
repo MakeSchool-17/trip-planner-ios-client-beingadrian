@@ -13,7 +13,6 @@ import MapKit
 
 class MapHelper {
     
-    
     // MARK: Properties
     
     static let placesClient = GMSPlacesClient()

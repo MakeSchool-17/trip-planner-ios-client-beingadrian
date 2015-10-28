@@ -12,6 +12,9 @@ import CoreData
 
 class DataHelper {
     
+    // singleton
+    static let sharedInstance = DataHelper()
+    
     // MARK: Constants
     
     private let TripEntityName = "TripEntity"
@@ -26,7 +29,6 @@ class DataHelper {
     private let WaypointNameKey = "name"
     private let WaypointTripKey = "trip"
     
-    // managedObjectContext
     let moc = DataController().managedObjectContext
     
     

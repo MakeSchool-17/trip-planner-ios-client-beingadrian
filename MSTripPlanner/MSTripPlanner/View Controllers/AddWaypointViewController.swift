@@ -22,9 +22,7 @@ class AddWaypointViewController: UIViewController {
     var mapViewDecorator: MapViewDecorator!
     var matchedPlaces: [GMSAutocompletePrediction] = []
     var selectedPlace: GMSPlace?
-    
-    // core data
-    let dataHelper = DataHelper()
+
     var trip: Trip?
     
     
@@ -47,15 +45,14 @@ class AddWaypointViewController: UIViewController {
     
     func setup() {
         
-        // search table view
+        // search table view setup
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
-        // search bar
+        // search bar setup
         searchBar.delegate = self
         
         searchTableView.hidden = true
-        
         
     }
     
@@ -81,15 +78,15 @@ class AddWaypointViewController: UIViewController {
             let waypointLatitude = Float(place.coordinate.latitude)
             
             // add waypoint to core data
-            let waypoint = dataHelper.addWaypointWithName(waypointName, longitude: waypointLongitude, latitude: waypointLatitude)
+            let waypoint = DataHelper.sharedInstance.addWaypointWithName(waypointName, longitude: waypointLongitude, latitude: waypointLatitude)
             
             // create relationship
             if let trip = trip {
-                let associatedTrip = dataHelper.fetchTripWithObjectID(trip.objectID)
+                let associatedTrip = DataHelper.sharedInstance.fetchTripWithObjectID(trip.objectID)
                 waypoint.trip = associatedTrip
                 
                 do {
-                    try dataHelper.moc.save()
+                    try DataHelper.sharedInstance.moc.save()
                 } catch {
                     fatalError("Erro saving relationship: \(error)")
                 }

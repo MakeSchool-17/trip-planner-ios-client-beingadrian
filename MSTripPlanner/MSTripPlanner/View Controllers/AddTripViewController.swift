@@ -17,9 +17,6 @@ class AddTripViewController: UIViewController {
     @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
     @IBOutlet var addTripView: AddTripView!
     
-    // core data
-    let dataHelper = DataHelper()
-    
     
     // MARK: Base methods
 
@@ -30,11 +27,7 @@ class AddTripViewController: UIViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-    }
+    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
     
     func setup() {
         
@@ -58,11 +51,11 @@ class AddTripViewController: UIViewController {
     
     @IBAction func addBarButtonPressed(sender: UIBarButtonItem) {
         
-        // access user input
+        // access user input text
         guard let tripName = addTripView.textField.text else { return }
         
         // store trip to core data
-        dataHelper.addTripWithName(tripName)
+        DataHelper.sharedInstance.addTripWithName(tripName)
         
         dismissViewControllerAnimated(true, completion: nil)
         

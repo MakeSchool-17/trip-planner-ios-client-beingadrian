@@ -29,10 +29,7 @@ class WaypointViewController: UIViewController {
         
         // go to location
         if let waypoint = waypoint {
-            let latitude = Double(waypoint.latitude!)
-            let longitude = Double(waypoint.longitude!)
-            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            mapViewDecorator?.goToLocationWithCoordinate(coordinate)
+            mapViewDecorator?.goToWaypoint(waypoint)
         }
 
     }

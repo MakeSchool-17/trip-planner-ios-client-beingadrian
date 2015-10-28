@@ -28,6 +28,7 @@ class MapViewDecorator {
             // set camera
             let mapCamera = MKMapCamera(lookingAtCenterCoordinate: coordinate, fromEyeCoordinate: coordinate, eyeAltitude: 10000)
             self.mapView.setCamera(mapCamera, animated: true)
+
         }
         
     }
@@ -41,14 +42,32 @@ class MapViewDecorator {
             let mapCamera = MKMapCamera(lookingAtCenterCoordinate: place.coordinate, fromEyeCoordinate: place.coordinate, eyeAltitude: 10000)
             self.mapView.setCamera(mapCamera, animated: true)
             
+            // add pin
+            let pin = MKPointAnnotation()
+            pin.coordinate = place.coordinate
+            pin.title = place.name
+            pin.subtitle = place.formattedAddress
+            self.mapView.addAnnotation(pin)
+            
         }
         
     }
     
-    func goToLocationWithCoordinate(coordinate: CLLocationCoordinate2D) {
+    func goToWaypoint(waypoint: Waypoint) {
+        
+        let latitude = Double(waypoint.latitude!)
+        let longitude = Double(waypoint.longitude!)
+        let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         
         let mapCamera = MKMapCamera(lookingAtCenterCoordinate: coordinate, fromEyeCoordinate: coordinate, eyeAltitude: 10000)
         self.mapView.setCamera(mapCamera, animated: true)
+        
+        // add pin
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = waypoint.name
+        
+        self.mapView.addAnnotation(pin)
         
     }
     

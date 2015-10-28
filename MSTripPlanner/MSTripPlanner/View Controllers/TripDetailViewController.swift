@@ -17,11 +17,11 @@ class TripDetailViewController: UIViewController {
     
     var trip: Trip!
     
-    // core data
-    let dataHelper = DataHelper()
     var waypoints: [Waypoint] = []
     var selectedWaypoint: Waypoint?
     
+    
+    // MARK: Base methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,7 @@ class TripDetailViewController: UIViewController {
         
         tripDetailNavigationItem.title = trip.name
         
-        // override trip
-        trip = dataHelper.fetchTripWithObjectID(trip.objectID)
-        
-        // get waypoints
-        dataHelper.moc.refreshAllObjects()
+        // initial waypoints retrieval
         waypoints = trip.waypoints?.allObjects as! [Waypoint]
         
     }
@@ -42,7 +38,6 @@ class TripDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         // update waypoints array after adding waypoint
-        dataHelper.moc.refreshAllObjects()
         waypoints = trip.waypoints?.allObjects as! [Waypoint]
         waypointsTableView.reloadData()
         
@@ -93,6 +88,20 @@ extension TripDetailViewController: UITableViewDelegate {
         
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
+            
+            let waypointToDelete = waypoints[indexPath.row]
+            
+            // delete waypoint from core data
+            DataHelper.sharedInstance.deleteWaypointWithID(waypointToDelete.objectID)
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            
+        }
+        
+    }
     
 }
 
@@ -100,12 +109,12 @@ extension TripDetailViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        return waypoints.count
+        return DataHelper.sharedInstance.fetchWaypoints().count
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
         let waypoint = waypoints[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("WaypointCell") as! WaypointCell
