@@ -16,7 +16,7 @@ class PlannedTripsViewController: UIViewController {
     
     var trips: [Trip] = []
     var selectedTrip: Trip?
-    
+
     
     // MARK: Base Methods
 
@@ -27,6 +27,11 @@ class PlannedTripsViewController: UIViewController {
         
         // initial trips retrieval
         trips = DataHelper.sharedInstance.fetchTrips()
+        
+        // design implementations
+        let navDecorator = BarDecorator(navigationBar: navigationController!.navigationBar)
+        navDecorator.changeBarTintColor()
+        navDecorator.setTitleFont()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -36,7 +41,7 @@ class PlannedTripsViewController: UIViewController {
         
         // reload table view to sync new data after adding trip
         plannedTripsTableView.reloadData()
-        
+
     }
 
     func setup() {
@@ -59,8 +64,6 @@ class PlannedTripsViewController: UIViewController {
     }
     
     // other methods
-    
-    override func prefersStatusBarHidden() -> Bool { return true }
     
     override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
     

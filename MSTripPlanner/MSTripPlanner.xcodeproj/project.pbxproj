@@ -13,6 +13,7 @@
 		330456931BD95C0300B4EA34 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3304568F1BD95C0300B4EA34 /* Trip.swift */; };
 		331F9F4C1BE0034D009AC387 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F9F4B1BE0034D009AC387 /* MapHelper.swift */; };
 		331F9F4F1BE13EBB009AC387 /* MapViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F9F4E1BE13EBB009AC387 /* MapViewDecorator.swift */; };
+		331F9F551BE188CA009AC387 /* BarDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F9F541BE188CA009AC387 /* BarDecorator.swift */; };
 		332A1F0B1BD6F42E004FA8A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332A1F0A1BD6F42E004FA8A6 /* CoreData.framework */; };
 		332A1F0F1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332A1F0D1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld */; };
 		332A1F111BD6F5A6004FA8A6 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A1F101BD6F5A6004FA8A6 /* DataController.swift */; };
@@ -60,6 +61,7 @@
 		3304568F1BD95C0300B4EA34 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		331F9F4B1BE0034D009AC387 /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
 		331F9F4E1BE13EBB009AC387 /* MapViewDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewDecorator.swift; sourceTree = "<group>"; };
+		331F9F541BE188CA009AC387 /* BarDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarDecorator.swift; sourceTree = "<group>"; };
 		332A1F0A1BD6F42E004FA8A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		332A1F0E1BD6F505004FA8A6 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		332A1F101BD6F5A6004FA8A6 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				331F9F4E1BE13EBB009AC387 /* MapViewDecorator.swift */,
+				331F9F541BE188CA009AC387 /* BarDecorator.swift */,
 			);
 			path = Decorators;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				3358E81A1BD5AC100060C4CB /* PlannedTripsViewController.swift in Sources */,
 				3358E7E91BD5AB630060C4CB /* AppDelegate.swift in Sources */,
 				338C04BA1BDFF64E003D74C6 /* PlaceCell.swift in Sources */,
+				331F9F551BE188CA009AC387 /* BarDecorator.swift in Sources */,
 				331F9F4F1BE13EBB009AC387 /* MapViewDecorator.swift in Sources */,
 				330456911BD95C0300B4EA34 /* Waypoint.swift in Sources */,
 				33FC21261BDAB23D00109565 /* AddTripView.swift in Sources */,

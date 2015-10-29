@@ -13,26 +13,26 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="xeU-Hy-KAw">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripCell" rowHeight="50" id="Via-uT-d1l" customClass="TripCell" customModule="MSTripPlanner" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="45" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Via-uT-d1l" id="vdK-aP-U8x">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc9-mm-QYu" userLabel="Trip Name Label">
-                                                    <rect key="frame" x="30" y="14" width="42" height="20.5"/>
+                                                    <rect key="frame" x="30" y="14.5" width="39" height="19.5"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -93,25 +93,25 @@
                         <viewControllerLayoutGuide type="bottom" id="YYv-mz-kgj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TSI-tx-BXl" userLabel="Trip Detail View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Peg-17-Iue">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="553"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaypointCell" rowHeight="50" id="pZA-Ny-SES" customClass="WaypointCell" customModule="MSTripPlanner" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="45" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pZA-Ny-SES" id="Emc-Oh-OCR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waypoint Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzw-yG-KC1" userLabel="Waypoint Name Label">
-                                                    <rect key="frame" x="30" y="14" width="121" height="20.5"/>
+                                                    <rect key="frame" x="30" y="14.5" width="113.5" height="19.5"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -130,7 +130,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WAYPOINTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLZ-5x-2lw" userLabel="Waypoint Label">
-                                <rect key="frame" x="147.5" y="64" width="81" height="17"/>
+                                <rect key="frame" x="147" y="20" width="81" height="17"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -144,22 +144,23 @@
                             <constraint firstItem="fLZ-5x-2lw" firstAttribute="centerX" secondItem="TSI-tx-BXl" secondAttribute="centerX" id="JpD-Tt-mVI"/>
                             <constraint firstItem="YYv-mz-kgj" firstAttribute="top" secondItem="Peg-17-Iue" secondAttribute="bottom" id="Txd-zZ-fLE"/>
                             <constraint firstAttribute="trailing" secondItem="Peg-17-Iue" secondAttribute="trailing" id="Z3o-in-YFl"/>
-                            <constraint firstItem="Peg-17-Iue" firstAttribute="top" secondItem="fau-5T-3Dm" secondAttribute="bottom" constant="20" id="vxe-KV-Sd8"/>
+                            <constraint firstItem="Peg-17-Iue" firstAttribute="top" secondItem="fau-5T-3Dm" secondAttribute="bottom" constant="50" id="vxe-KV-Sd8"/>
                             <constraint firstItem="fLZ-5x-2lw" firstAttribute="top" secondItem="fau-5T-3Dm" secondAttribute="bottom" constant="20" id="zdH-qo-KSk"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Trip Detail" id="zbG-Yq-IRP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aVj-i2-44C">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="aVj-i2-44C">
                             <connections>
-                                <action selector="addButtonPressed:" destination="fZg-aT-Odm" id="GSQ-AB-cuk"/>
+                                <action selector="rightBarButtonPressed:" destination="fZg-aT-Odm" id="Yee-kz-6aR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="rightBarButtonItem" destination="aVj-i2-44C" id="GmN-g7-JHm"/>
                         <outlet property="tripDetailNavigationItem" destination="zbG-Yq-IRP" id="lf8-zv-b0G"/>
                         <outlet property="waypointsTableView" destination="Peg-17-Iue" id="vxG-0n-HVt"/>
                         <segue destination="8T0-xo-7Q7" kind="presentation" identifier="ToAddWaypoint" id="6jf-83-BHG"/>
@@ -182,12 +183,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-pj-DcJ" userLabel="Label">
+                                <rect key="frame" x="110.5" y="283" width="154" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0Y-zx-UHW" userLabel="Input Field">
+                                <rect key="frame" x="50" y="328" width="275" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="HnP-98-e5k" eventType="editingChanged" id="N7p-Mx-zho"/>
+                                </connections>
+                            </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkP-9X-GhT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0eY-35-41P"/>
                                 </constraints>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Add Trip" id="P0S-YJ-ciG">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RKj-iU-r6Z" userLabel="Cancel Button">
@@ -203,22 +223,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-pj-DcJ" userLabel="Label">
-                                <rect key="frame" x="109" y="283.5" width="156.5" height="20.5"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0Y-zx-UHW" userLabel="Input Field">
-                                <rect key="frame" x="50" y="328.5" width="275" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldEditingChanged:" destination="HnP-98-e5k" eventType="editingChanged" id="N7p-Mx-zho"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -241,6 +245,7 @@
                     <connections>
                         <outlet property="addBarButtonItem" destination="IOG-su-CoP" id="0xQ-rx-dzw"/>
                         <outlet property="addTripView" destination="HnP-98-e5k" id="eMA-WE-86h"/>
+                        <outlet property="navigationBar" destination="EkP-9X-GhT" id="gst-AC-BjY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIr-3z-tD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,12 +257,15 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T9M-vF-EWi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mZW-ZH-rL8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mZW-ZH-rL8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -281,11 +289,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QiB-qz-dZh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="GVx-9z-eNw"/>
                                 </constraints>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Add Waypoint" id="vjo-KY-Nad">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BZX-Go-uff">
@@ -302,7 +313,7 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-Fq-dJ3">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Uex-kw-V0X"/>
@@ -310,11 +321,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ekj-rT-WUD">
-                                <rect key="frame" x="0.0" y="88" width="375" height="579"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <animations/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dta-7q-bZF" userLabel="Search Table View">
-                                <rect key="frame" x="0.0" y="88" width="375" height="579"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -327,9 +338,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRd-YA-S2j" userLabel="Place Name Label">
-                                                    <rect key="frame" x="30" y="16" width="315" height="17"/>
+                                                    <rect key="frame" x="30" y="15" width="315" height="19.5"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -377,6 +388,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="mapView" destination="ekj-rT-WUD" id="Zgp-eY-jj4"/>
+                        <outlet property="navigationBar" destination="QiB-qz-dZh" id="pzS-6Q-vEK"/>
                         <outlet property="searchBar" destination="5e7-Fq-dJ3" id="RQw-xn-74X"/>
                         <outlet property="searchTableView" destination="dta-7q-bZF" id="w9R-8D-sCb"/>
                     </connections>
@@ -394,11 +406,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Qkq-WL-TFN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="R2L-G5-Rwd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dhj-Ju-0UF">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <animations/>
                             </mapView>
                         </subviews>

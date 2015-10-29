@@ -16,6 +16,7 @@ class AddTripViewController: UIViewController {
     
     @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
     @IBOutlet var addTripView: AddTripView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     
     // MARK: Base methods
@@ -24,6 +25,11 @@ class AddTripViewController: UIViewController {
         super.viewDidLoad()
 
         setup()
+        
+        // design implementations
+        let navDecorator = BarDecorator(navigationBar: navigationBar)
+        navDecorator.changeBarTintColor()
+        navDecorator.setTitleFont()
         
     }
 
@@ -37,8 +43,6 @@ class AddTripViewController: UIViewController {
         addBarButtonItem.enabled = false
         
     }
-    
-    override func prefersStatusBarHidden() -> Bool { return true }
     
     
     // MARK: Actions

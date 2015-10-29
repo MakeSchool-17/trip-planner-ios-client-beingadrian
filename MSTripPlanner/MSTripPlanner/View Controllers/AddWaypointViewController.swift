@@ -15,6 +15,7 @@ class AddWaypointViewController: UIViewController {
 
     // MARK: Properties
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
@@ -34,6 +35,11 @@ class AddWaypointViewController: UIViewController {
         setup()
         
         mapViewDecorator = MapViewDecorator(mapView: mapView)
+        
+        // design implementations
+        let navDecorator = BarDecorator(navigationBar: navigationBar)
+        navDecorator.changeBarTintColor()
+        navDecorator.setTitleFont()
         
     }
     
@@ -57,8 +63,6 @@ class AddWaypointViewController: UIViewController {
     }
     
     override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
-    
-    override func prefersStatusBarHidden() -> Bool { return true }
 
     
     // MARK: Actions

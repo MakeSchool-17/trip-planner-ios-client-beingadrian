@@ -14,6 +14,7 @@ class TripDetailViewController: UIViewController {
     
     @IBOutlet weak var tripDetailNavigationItem: UINavigationItem!
     @IBOutlet weak var waypointsTableView: UITableView!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     var trip: Trip!
     
@@ -32,6 +33,10 @@ class TripDetailViewController: UIViewController {
         
         // initial waypoints retrieval
         waypoints = trip.waypoints?.allObjects as! [Waypoint]
+        
+        // gesture recognizer
+        let longPress = UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized")
+        waypointsTableView.addGestureRecognizer(longPress)
         
     }
     
@@ -64,16 +69,28 @@ class TripDetailViewController: UIViewController {
     }
 
     override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
-    
-    override func prefersStatusBarHidden() -> Bool { return true }
 
     
     // MARK: Actions
     
-    @IBAction func addButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func longPressGestureRecognized() {
         
-        performSegueWithIdentifier("ToAddWaypoint", sender: self)
+        if !waypointsTableView.editing {
+            rightBarButtonItem.title = "Done"
+            waypointsTableView.setEditing(true, animated: true)
+        }
+        
+    }
     
+    @IBAction func rightBarButtonPressed(sender: UIBarButtonItem) {
+        
+        if waypointsTableView.editing {
+            waypointsTableView.setEditing(false, animated: true)
+            rightBarButtonItem.title = "Add"
+        } else {
+            performSegueWithIdentifier("ToAddWaypoint", sender: self)
+        }
+        
     }
     
 }
@@ -102,6 +119,20 @@ extension TripDetailViewController: UITableViewDelegate {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
             
         }
+        
+    }
+    
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
+        return true
+        
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        
+        let itemToMove = waypoints[sourceIndexPath.row]
+        waypoints.removeAtIndex(sourceIndexPath.row)
+        waypoints.insert(itemToMove, atIndex: destinationIndexPath.row)
         
     }
     
