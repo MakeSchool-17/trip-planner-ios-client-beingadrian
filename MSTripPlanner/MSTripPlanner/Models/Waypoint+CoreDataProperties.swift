@@ -2,7 +2,7 @@
 //  Waypoint+CoreDataProperties.swift
 //  MSTripPlanner
 //
-//  Created by Adrian Wisaksana on 10/22/15.
+//  Created by Adrian Wisaksana on 10/28/15.
 //  Copyright © 2015 BeingAdrian. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,8 +13,6 @@ import Foundation
 import CoreData
 
 extension Waypoint {
-    
-    // MARK: Properties
 
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?

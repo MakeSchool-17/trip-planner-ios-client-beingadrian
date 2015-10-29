@@ -32,7 +32,7 @@ class TripDetailViewController: UIViewController {
         tripDetailNavigationItem.title = trip.name
         
         // initial waypoints retrieval
-        waypoints = trip.waypoints?.allObjects as! [Waypoint]
+        waypoints = trip.waypoints?.array as! [Waypoint]
         
         // gesture recognizer
         let longPress = UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized")
@@ -43,7 +43,7 @@ class TripDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         // update waypoints array after adding waypoint
-        waypoints = trip.waypoints?.allObjects as! [Waypoint]
+        waypoints = trip.waypoints?.array as! [Waypoint]
         waypointsTableView.reloadData()
         
     }
@@ -114,7 +114,7 @@ extension TripDetailViewController: UITableViewDelegate {
             // delete waypoint from core data
             DataHelper.sharedInstance.deleteWaypointWithID(waypointToDelete.objectID)
             
-            waypoints = trip.waypoints?.allObjects as! [Waypoint]
+            waypoints = trip.waypoints?.array as! [Waypoint]
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
             
@@ -133,6 +133,14 @@ extension TripDetailViewController: UITableViewDelegate {
         let itemToMove = waypoints[sourceIndexPath.row]
         waypoints.removeAtIndex(sourceIndexPath.row)
         waypoints.insert(itemToMove, atIndex: destinationIndexPath.row)
+        
+        trip.waypoints = NSOrderedSet(array: waypoints)
+        
+        do {
+            try DataHelper.sharedInstance.moc.save()
+        } catch {
+            fatalError("Error saving waypoints array as NSSet: \(error)")
+        }
         
     }
     

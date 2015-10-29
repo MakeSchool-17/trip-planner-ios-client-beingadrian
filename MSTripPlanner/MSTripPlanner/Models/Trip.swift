@@ -2,7 +2,7 @@
 //  Trip.swift
 //  MSTripPlanner
 //
-//  Created by Adrian Wisaksana on 10/22/15.
+//  Created by Adrian Wisaksana on 10/28/15.
 //  Copyright © 2015 BeingAdrian. All rights reserved.
 //
 
@@ -11,6 +11,7 @@ import CoreData
 
 @objc(Trip)
 class Trip: NSManagedObject {
-    
+
+// Insert code here to add functionality to your managed object subclass
 
 }
