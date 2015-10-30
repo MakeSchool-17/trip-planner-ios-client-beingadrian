@@ -40,10 +40,9 @@ class TripDetailViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         // update waypoints array after adding waypoint
-        waypoints = trip.waypoints?.array as! [Waypoint]
         waypointsTableView.reloadData()
         
     }
@@ -67,8 +66,6 @@ class TripDetailViewController: UIViewController {
         }
         
     }
-
-    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
 
     
     // MARK: Actions

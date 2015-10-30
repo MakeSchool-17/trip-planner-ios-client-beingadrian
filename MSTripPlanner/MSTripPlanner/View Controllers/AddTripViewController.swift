@@ -32,8 +32,6 @@ class AddTripViewController: UIViewController {
         navDecorator.setTitleFont()
         
     }
-
-    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
     
     func setup() {
         

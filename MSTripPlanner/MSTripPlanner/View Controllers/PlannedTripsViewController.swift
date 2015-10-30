@@ -34,7 +34,7 @@ class PlannedTripsViewController: UIViewController {
         navDecorator.setTitleFont()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         // update trips
         trips = DataHelper.sharedInstance.fetchTrips()
@@ -43,9 +43,9 @@ class PlannedTripsViewController: UIViewController {
         plannedTripsTableView.reloadData()
         
         // post user test
-//        ServerHelper.postUser("beingadrian", password: "abc123")
+        //        ServerHelper.postUser("beingadrian", password: "abc123")
         ServerHelper.getTrips()
-
+        
     }
 
     func setup() {
@@ -67,11 +67,6 @@ class PlannedTripsViewController: UIViewController {
         
     }
     
-    // other methods
-    
-    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
-    
-    
     // MARK: Actions
     
     @IBAction func addBarButtonPressed(sender: UIBarButtonItem) {
@@ -83,12 +78,6 @@ class PlannedTripsViewController: UIViewController {
 }
 
 extension PlannedTripsViewController: UITableViewDelegate {
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        return 50
-        
-    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -120,7 +109,7 @@ extension PlannedTripsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return DataHelper.sharedInstance.fetchTrips().count
+        return trips.count
         
     }
     

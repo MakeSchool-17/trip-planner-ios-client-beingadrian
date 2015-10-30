@@ -61,8 +61,6 @@ class AddWaypointViewController: UIViewController {
         searchTableView.hidden = true
         
     }
-    
-    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
 
     
     // MARK: Actions

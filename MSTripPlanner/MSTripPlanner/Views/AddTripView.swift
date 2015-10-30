@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class AddTripView: UIView {
 
     // MARK: - Properties
