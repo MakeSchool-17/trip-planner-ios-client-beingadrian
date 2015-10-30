@@ -34,7 +34,7 @@ class DataHelper {
     
     // MARK: - Trip methods
     
-    func addTripWithName(name: String) {
+    func addTripWithName(name: String) -> Trip {
         
         // setup entity
         let tripEntity = NSEntityDescription.insertNewObjectForEntityForName(TripEntityName, inManagedObjectContext: moc) as! Trip
@@ -46,6 +46,7 @@ class DataHelper {
         do {
             try moc.save()
             print("Save successful")
+            return tripEntity
         } catch {
             fatalError("Failure to save context: \(error)")
         }

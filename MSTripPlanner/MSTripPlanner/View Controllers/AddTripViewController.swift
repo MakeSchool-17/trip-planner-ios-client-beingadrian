@@ -59,7 +59,10 @@ class AddTripViewController: UIViewController {
         guard let tripName = addTripView.textField.text else { return }
         
         // store trip to core data
-        DataHelper.sharedInstance.addTripWithName(tripName)
+        let tripToAdd = DataHelper.sharedInstance.addTripWithName(tripName)
+        
+        // store trip to server
+        ServerHelper.postTrip(tripToAdd)
         
         dismissViewControllerAnimated(true, completion: nil)
         

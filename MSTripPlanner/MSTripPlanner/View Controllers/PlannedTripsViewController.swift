@@ -41,6 +41,10 @@ class PlannedTripsViewController: UIViewController {
         
         // reload table view to sync new data after adding trip
         plannedTripsTableView.reloadData()
+        
+        // post user test
+//        ServerHelper.postUser("beingadrian", password: "abc123")
+        ServerHelper.getTrips()
 
     }
 
