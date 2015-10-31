@@ -36,7 +36,7 @@
 		3395466D1BDEBA1700E0F10C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3395466C1BDEBA1700E0F10C /* MapKit.framework */; };
 		33FC21261BDAB23D00109565 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FC21251BDAB23D00109565 /* AddTripView.swift */; };
 		33FC21291BDAD42100109565 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FC21281BDAD42100109565 /* TripCell.swift */; };
-		D85E596D187CA0B25063E4F5 /* libPods-MSTripPlanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD41F15D8792E82859260FB5 /* libPods-MSTripPlanner.a */; };
+		D5598C27389F68928349B5F3 /* Pods_MSTripPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 367A348AACE8B430665AF0D9 /* Pods_MSTripPlanner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +92,7 @@
 		3395466C1BDEBA1700E0F10C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		33FC21251BDAB23D00109565 /* AddTripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
 		33FC21281BDAD42100109565 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
-		AD41F15D8792E82859260FB5 /* libPods-MSTripPlanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSTripPlanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		367A348AACE8B430665AF0D9 /* Pods_MSTripPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSTripPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9A965A89C656F4FBE7FE65 /* Pods-MSTripPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSTripPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSTripPlanner/Pods-MSTripPlanner.debug.xcconfig"; sourceTree = "<group>"; };
 		CF9E83C556CEFEA2F98D1306 /* Pods-MSTripPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSTripPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSTripPlanner/Pods-MSTripPlanner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,7 +104,7 @@
 			files = (
 				3395466D1BDEBA1700E0F10C /* MapKit.framework in Frameworks */,
 				332A1F0B1BD6F42E004FA8A6 /* CoreData.framework in Frameworks */,
-				D85E596D187CA0B25063E4F5 /* libPods-MSTripPlanner.a in Frameworks */,
+				D5598C27389F68928349B5F3 /* Pods_MSTripPlanner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +276,7 @@
 		DF0254EAE3E0528C9074BFD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AD41F15D8792E82859260FB5 /* libPods-MSTripPlanner.a */,
+				367A348AACE8B430665AF0D9 /* Pods_MSTripPlanner.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
