@@ -12,6 +12,6 @@ import CoreData
 @objc(Trip)
 class Trip: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+
 
 }
