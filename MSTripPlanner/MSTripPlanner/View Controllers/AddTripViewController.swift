@@ -59,7 +59,6 @@ class AddTripViewController: UIViewController {
         // store trip to core data
         DataHelper.sharedInstance.addTripWithName(tripName)
         
-        
         dismissViewControllerAnimated(true, completion: nil)
         
     }

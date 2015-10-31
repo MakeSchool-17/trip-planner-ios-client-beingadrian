@@ -9,6 +9,8 @@
 import Foundation
 
 
+typealias GetTripsCallback = (trips: [TripJSON]) -> Void
+
 class APIClient {
     
     // MARK: Properties
@@ -54,28 +56,10 @@ class APIClient {
     
     static func postTrip(trip: Trip) {
         
-        // create waypoint data
-        var waypointArray: [AnyObject] = []
-        for waypoint in trip.waypoints! {
-            
-            if let waypoint = waypoint as? Waypoint {
-                let dict: [String: AnyObject] = [
-                    "name": waypoint.name!,
-                    "longitude": waypoint.longitude!,
-                    "latitude": waypoint.latitude!,
-                    "trip": waypoint.trip!.name!
-                ]
-                
-                waypointArray.append(dict)
-            }
-            
-        }
+        // create json data
+        let tripJSON = TripJSON(trip: trip)
+        let content = tripJSON.toJSON()
         
-        // create trip data
-        let content: [String: AnyObject] = [
-            "name": trip.name!,
-            "waypoints": waypointArray
-        ]
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(content, options: NSJSONWritingOptions(rawValue: 0))
         
         // url settings
@@ -103,7 +87,7 @@ class APIClient {
         
     }
     
-    static func getTrips() {
+    static func getTrips(completion: GetTripsCallback) {
         
         // url settings 
         let url = NSURL(string: tripsURL)!
@@ -119,14 +103,19 @@ class APIClient {
             (data, response, error) in
             
             do {
-                let jsonOptional: AnyObject! = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+                let jsonTrips = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as! [JSON]
                 
-                print(jsonOptional.valueForKeyPath("name")!)
-                print(jsonOptional.valueForKeyPath("waypoints")!)
+                // get managed object context
+                let moc = DataHelper.sharedInstance.moc
                 
-                if let json = jsonOptional! as? Dictionary<String, AnyObject> {
-                    print(json)
+                for jsonTrip in jsonTrips as [JSON] {
+                    _ = Trip(context: moc, jsonTrip: jsonTrip)
                 }
+                
+                try! moc.save()
+                
+                
+                
             } catch {
                 fatalError("Error fetchng JSON object: \(error)")
             }
