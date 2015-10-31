@@ -109,10 +109,11 @@ extension PlannedTripsViewController: UITableViewDelegate {
             
             // delete from core data
             DataHelper.sharedInstance.deleteTripWithObjectID(tripToDelete.objectID)
+        
+            trips.removeAtIndex(indexPath.row)
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
-            
-            trips = DataHelper.sharedInstance.fetchTrips()
+
         }
         
     }
