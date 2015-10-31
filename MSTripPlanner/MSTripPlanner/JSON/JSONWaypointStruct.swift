@@ -8,12 +8,21 @@
 
 import Foundation
 
+typealias JSONWaypoint = Dictionary<String, AnyObject>
 
-struct WaypointJSON {
+
+struct JSONWaypointStruct {
     
     let name: String
     let longitude: Double
     let latitude: Double
+    
+    
+    init?(json: JSONWaypoint) {
+        self.name = (json["name"]! as! String)
+        self.longitude = json["longitude"] as! Double
+        self.latitude = json["latitude"] as! Double
+    }
     
     init(waypoint: Waypoint) {
         self.name = waypoint.name!
@@ -21,7 +30,7 @@ struct WaypointJSON {
         self.latitude = waypoint.latitude! as Double
     }
     
-    func toJSON() -> JSON {
+    func toJSON() -> JSONWaypoint {
         
         let json: Dictionary<String, AnyObject> = [
             "name": name,

@@ -42,6 +42,10 @@ class PlannedTripsViewController: UIViewController {
         // reload table view to sync new data after adding trip
         plannedTripsTableView.reloadData()
         
+        // test post
+//        APIClient.postUser("beingadrian", password: "abc123")
+//        APIClient.postTrip(trips[0])
+        
     }
 
     func setup() {
@@ -64,6 +68,20 @@ class PlannedTripsViewController: UIViewController {
     }
     
     // MARK: Actions
+    
+    @IBAction func refreshBarButtonPressed(sender: UIBarButtonItem) {
+        
+        Synchronizer.sync() {
+            (tripsUpdated) in
+            
+            self.trips = tripsUpdated
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.plannedTripsTableView.reloadData()
+            }
+        }
+        
+    }
     
     @IBAction func addBarButtonPressed(sender: UIBarButtonItem) {
         

@@ -67,6 +67,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Planned Trips" id="xGv-R3-B8W">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="f6H-RQ-RBR">
+                            <connections>
+                                <action selector="refreshBarButtonPressed:" destination="BYZ-38-t0r" id="CuU-ac-BRg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cYK-KO-G9h" userLabel="Add Button">
                             <connections>
                                 <action selector="addBarButtonPressed:" destination="BYZ-38-t0r" id="IID-sH-FiP"/>

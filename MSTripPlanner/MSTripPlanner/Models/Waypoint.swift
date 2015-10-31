@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+
 @objc(Waypoint)
 class Waypoint: NSManagedObject {
 
@@ -18,14 +19,15 @@ class Waypoint: NSManagedObject {
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
     }
     
-    convenience init(context: NSManagedObjectContext, jsonWaypoint: JSON) {
+    convenience init(context: NSManagedObjectContext, jsonWaypointStruct: JSONWaypointStruct) {
         let entityDescription = NSEntityDescription.entityForName("WaypointEntity", inManagedObjectContext:
             context)!
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
         
-        name = (jsonWaypoint["name"]! as! String)
-        longitude = jsonWaypoint["longitude"]! as! Double
-        latitude = jsonWaypoint["latitude"]! as! Double
+        name = jsonWaypointStruct.name
+        longitude = jsonWaypointStruct.longitude
+        latitude = jsonWaypointStruct.latitude
+
     }
 
 }

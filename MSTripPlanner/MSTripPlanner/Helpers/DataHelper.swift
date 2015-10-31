@@ -21,6 +21,7 @@ class DataHelper {
     private let WaypointEntityName = "WaypointEntity"
     
     private let TripNameKey = "name"
+    private let TripIDKey = "id"
     private let TripOwnerKey = "owner"
     private let TripWaypointsKey = "waypoints"
     
@@ -41,6 +42,10 @@ class DataHelper {
         
         // add data
         tripEntity.setValue(name, forKey: TripNameKey)
+        
+        // set object id
+        let id = String(ObjectIdentifier(tripEntity).uintValue)
+        tripEntity.setValue(id, forKey: TripIDKey)
         
         // save entity
         do {

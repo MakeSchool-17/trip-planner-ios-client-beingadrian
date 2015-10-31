@@ -9,7 +9,7 @@
 import Foundation
 
 
-typealias GetTripsCallback = (trips: [TripJSON]) -> Void
+typealias GetTripsCallback = (trips: [JSONTripStruct]?) -> Void
 
 class APIClient {
     
@@ -57,8 +57,8 @@ class APIClient {
     static func postTrip(trip: Trip) {
         
         // create json data
-        let tripJSON = TripJSON(trip: trip)
-        let content = tripJSON.toJSON()
+        let jsonTripStruct = JSONTripStruct(trip: trip)
+        let content = jsonTripStruct.toJSON()
         
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(content, options: NSJSONWritingOptions(rawValue: 0))
         
@@ -103,22 +103,23 @@ class APIClient {
             (data, response, error) in
             
             do {
-                let jsonTrips = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as! [JSON]
+                let jsonTrips = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as! [JSONTrip]
                 
-                // get managed object context
-                let moc = DataHelper.sharedInstance.moc
-                
-                for jsonTrip in jsonTrips as [JSON] {
-                    _ = Trip(context: moc, jsonTrip: jsonTrip)
+                var jsonTripStructArray: [JSONTripStruct] = []
+                for jsonTrip in jsonTrips {
+                    let jsonTripStruct = JSONTripStruct(json: jsonTrip)!
+                    jsonTripStructArray.append(jsonTripStruct)
                 }
                 
-                try! moc.save()
-                
-                
+                completion(trips: jsonTripStructArray)
                 
             } catch {
+                
                 fatalError("Error fetchng JSON object: \(error)")
+
             }
+            
+            completion(trips: nil)
             
         }
         

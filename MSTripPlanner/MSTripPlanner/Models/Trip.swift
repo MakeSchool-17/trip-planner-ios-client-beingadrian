@@ -18,25 +18,22 @@ class Trip: NSManagedObject {
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
     }
     
-    convenience init(context: NSManagedObjectContext, jsonTrip: JSON) {
+    convenience init(context: NSManagedObjectContext, jsonTripStruct: JSONTripStruct) {
         let entityDescription = NSEntityDescription.entityForName("TripEntity", inManagedObjectContext:
             context)!
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
         
-        // parse waypoint json data
-        let waypointArrayJSON = jsonTrip["waypoints"]! as! [JSON]
-        
-        var array: [Waypoint] = []
-        for waypoint in waypointArrayJSON {
-            let wp = Waypoint(context: context, jsonWaypoint: waypoint)
-            array.append(wp)
+        // get waypoints
+        var waypointArray: [Waypoint] = []
+        for waypointStruct in jsonTripStruct.waypoints {
+            let waypoint = Waypoint(context: context, jsonWaypointStruct: waypointStruct)
+            waypointArray.append(waypoint)
         }
         
-        let waypointOrderedSet = NSOrderedSet(array: array)
-        
         // set values
-        name = (jsonTrip["name"]! as! String)
-        waypoints = waypointOrderedSet
+        self.name = jsonTripStruct.name
+        self.id = jsonTripStruct.id
+        self.waypoints = NSOrderedSet(array: waypointArray)
         
     }
 

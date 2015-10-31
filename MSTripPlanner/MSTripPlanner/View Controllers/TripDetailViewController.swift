@@ -43,6 +43,7 @@ class TripDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         // update waypoints array after adding waypoint
+        waypoints = trip.waypoints?.array as! [Waypoint]
         waypointsTableView.reloadData()
         
     }
