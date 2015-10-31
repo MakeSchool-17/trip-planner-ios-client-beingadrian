@@ -17,7 +17,7 @@
 		332A1F0B1BD6F42E004FA8A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332A1F0A1BD6F42E004FA8A6 /* CoreData.framework */; };
 		332A1F0F1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332A1F0D1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld */; };
 		332A1F111BD6F5A6004FA8A6 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A1F101BD6F5A6004FA8A6 /* DataController.swift */; };
-		33303FC01BE2E54F007D4E20 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33303FBF1BE2E54F007D4E20 /* ServerHelper.swift */; };
+		33303FC01BE2E54F007D4E20 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33303FBF1BE2E54F007D4E20 /* APIClient.swift */; };
 		33303FD61BE2E9BC007D4E20 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33303FD51BE2E9BC007D4E20 /* StringExtensions.swift */; };
 		334FC03B1BD8C1EA0094CA5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FC03A1BD8C1EA0094CA5B /* DataHelper.swift */; };
 		3358E7E91BD5AB630060C4CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E7E81BD5AB630060C4CB /* AppDelegate.swift */; };
@@ -67,7 +67,7 @@
 		332A1F0A1BD6F42E004FA8A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		332A1F0E1BD6F505004FA8A6 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		332A1F101BD6F5A6004FA8A6 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		33303FBF1BE2E54F007D4E20 /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
+		33303FBF1BE2E54F007D4E20 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		33303FD51BE2E9BC007D4E20 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		334FC03A1BD8C1EA0094CA5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		3358E7E51BD5AB630060C4CB /* MSTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,7 +218,7 @@
 			children = (
 				334FC03A1BD8C1EA0094CA5B /* DataHelper.swift */,
 				331F9F4B1BE0034D009AC387 /* MapHelper.swift */,
-				33303FBF1BE2E54F007D4E20 /* ServerHelper.swift */,
+				33303FBF1BE2E54F007D4E20 /* APIClient.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -485,7 +485,7 @@
 				3358E81C1BD5AC1B0060C4CB /* AddTripViewController.swift in Sources */,
 				331F9F5B1BE1B221009AC387 /* Waypoint.swift in Sources */,
 				331F9F4C1BE0034D009AC387 /* MapHelper.swift in Sources */,
-				33303FC01BE2E54F007D4E20 /* ServerHelper.swift in Sources */,
+				33303FC01BE2E54F007D4E20 /* APIClient.swift in Sources */,
 				334FC03B1BD8C1EA0094CA5B /* DataHelper.swift in Sources */,
 				3358E8221BD5B6300060C4CB /* WaypointViewController.swift in Sources */,
 				331F9F5C1BE1B221009AC387 /* Trip+CoreDataProperties.swift in Sources */,

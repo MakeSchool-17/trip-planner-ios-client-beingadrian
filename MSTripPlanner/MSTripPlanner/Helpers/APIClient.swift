@@ -9,7 +9,7 @@
 import Foundation
 
 
-class ServerHelper {
+class APIClient {
     
     // MARK: Properties
     
