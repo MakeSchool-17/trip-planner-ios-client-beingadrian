@@ -20,10 +20,32 @@ class Synchronizer {
             (trips) in
             
             // fetch trip ids from core data
-            let coreDataTripIds = DataHelper.sharedInstance.fetchTrips().map() { $0.id! }
+            let coreDataTrips = DataHelper.sharedInstance.fetchTrips()
+            let coreDataTripIds = coreDataTrips.map() { (coreDataTrip) in coreDataTrip.id! }
             
+            // get trips non existent in core data
             let newServerTrips = trips?.filter() {
+                // predicate: trips that does not contain matching IDs
                 !coreDataTripIds.contains($0.id)
+            }
+            
+            // fetch trip ids from server
+            let serverTripIds = trips!.map() { (serverTrip) in serverTrip.id }
+            
+            // get trips non existent in server
+            let newCoreDataTrips = coreDataTrips.filter() {
+                (coreDataTrip) in
+                
+                !serverTripIds.contains(coreDataTrip.id!)
+            }
+            
+            // post new core data trips
+            if newCoreDataTrips.count != 0 {
+                newCoreDataTrips.forEach() {
+                    (trip) in
+                    
+                    APIClient.postTrip(trip)
+                }
             }
             
             // get managed object context

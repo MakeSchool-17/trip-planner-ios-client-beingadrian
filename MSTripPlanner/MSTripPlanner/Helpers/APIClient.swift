@@ -102,24 +102,27 @@ class APIClient {
         let getTask = session.dataTaskWithRequest(urlRequest) {
             (data, response, error) in
             
-            do {
-                let jsonTrips = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as! [JSONTrip]
-                
-                var jsonTripStructArray: [JSONTripStruct] = []
-                for jsonTrip in jsonTrips {
-                    let jsonTripStruct = JSONTripStruct(json: jsonTrip)!
-                    jsonTripStructArray.append(jsonTripStruct)
+            if let data = data {
+                do {
+                    let jsonTrips = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as! [JSONTrip]
+                    
+                    var jsonTripStructArray: [JSONTripStruct] = []
+                    for jsonTrip in jsonTrips {
+                        let jsonTripStruct = JSONTripStruct(json: jsonTrip)!
+                        jsonTripStructArray.append(jsonTripStruct)
+                    }
+                    
+                    completion(trips: jsonTripStructArray)
+                    
+                } catch {
+                    
+                    fatalError("Error fetchng JSON object: \(error)")
+                    
                 }
-                
-                completion(trips: jsonTripStructArray)
-                
-            } catch {
-                
-                fatalError("Error fetchng JSON object: \(error)")
-
+            } else {
+                completion(trips: nil)
             }
-            
-            completion(trips: nil)
+
             
         }
         
