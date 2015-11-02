@@ -35,11 +35,6 @@ class PlannedTripsViewController: UIViewController {
         
         // test http
 //        APIClient().postUser("beingadrian", password: "abc123")
-//        APIClient().postTrip(trips[0])
-//        APIClient().getTrips() {
-//            (jsonTripStructs) in
-//            print("success")
-//        }
         
     }
     

@@ -22,7 +22,7 @@ class Synchronizer {
             
             let coreDataTrips = DataHelper.sharedInstance.fetchTrips()
             
-            // get new core data trips
+            // post new core data trips
             let serverTripIDs = jsonTripStructs?.map() { (jsonTripStruct) in jsonTripStruct.id! }
             let newCoreDataTrips = coreDataTrips.filter() {
                 (coreDataTrip) in
