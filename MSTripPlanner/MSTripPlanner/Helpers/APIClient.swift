@@ -13,17 +13,25 @@ class APIClient {
     
     // MARK: Properties
     
-    static let urlString = "http://127.0.0.1:5000/"
-    static let usersURL = urlString + "users/"
-    static let tripsURL = urlString + "trips/"
+    let urlString: String
+    let usersURL: String
+    let tripsURL: String
     
     // authorization
-    static let authString = "Basic " + "beingadrian:abc123".toBase64()
+    let authString = "Basic " + "beingadrian:abc123".toBase64()
     
+    // initialization
+    init() {
+        
+        self.urlString = "http://127.0.0.1:5000/"
+        self.usersURL = self.urlString + "users/"
+        self.tripsURL = self.urlString + "trips/"
+
+    }
     
     // MARK: Methods
     
-    static func postUser(username: String, password: String) {
+    func postUser(username: String, password: String) {
 
         // jsonify user data
         let content = ["username": username, "password": password]
@@ -52,7 +60,7 @@ class APIClient {
         
     }
     
-    static func postTrip(trip: Trip) {
+    func postTrip(trip: Trip) {
         
         // create waypoint data
         var waypointArray: [AnyObject] = []
@@ -103,7 +111,7 @@ class APIClient {
         
     }
     
-    static func getTrips() {
+    func getTrips() {
         
         // url settings 
         let url = NSURL(string: tripsURL)!
