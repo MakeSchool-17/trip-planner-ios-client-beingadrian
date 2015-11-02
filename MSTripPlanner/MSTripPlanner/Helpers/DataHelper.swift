@@ -40,7 +40,8 @@ class DataHelper {
         let tripEntity = NSEntityDescription.insertNewObjectForEntityForName(TripEntityName, inManagedObjectContext: moc) as! Trip
         
         // add data
-        tripEntity.setValue(name, forKey: TripNameKey)
+        tripEntity.name = name
+        tripEntity.id = String(ObjectIdentifier(tripEntity).uintValue)
         
         // save entity
         do {
@@ -106,6 +107,7 @@ class DataHelper {
         waypointEntity.name = name
         waypointEntity.latitude = latitude
         waypointEntity.longitude = longitude
+        waypointEntity.id = String(ObjectIdentifier(waypointEntity).uintValue)
         
         // save entity
         do {

@@ -32,6 +32,15 @@ class PlannedTripsViewController: UIViewController {
         let navDecorator = BarDecorator(navigationBar: navigationController!.navigationBar)
         navDecorator.changeBarTintColor()
         navDecorator.setTitleFont()
+        
+        // test http
+//        APIClient().postUser("beingadrian", password: "abc123")
+//        APIClient().postTrip(trips[0])
+//        APIClient().getTrips() {
+//            (jsonTripStructs) in
+//            print("success")
+//        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,6 +74,20 @@ class PlannedTripsViewController: UIViewController {
     
     // MARK: Actions
     
+    @IBAction func refreshBarButtonPressed(sender: UIBarButtonItem) {
+        
+        Synchronizer().sync() {
+            (trips) in
+            
+            self.trips = trips
+            
+            dispatch_sync(dispatch_get_main_queue()) {
+                self.plannedTripsTableView.reloadData()
+            }
+        }
+        
+    }
+    
     @IBAction func addBarButtonPressed(sender: UIBarButtonItem) {
         
         performSegueWithIdentifier("ToAddTrip", sender: self)
@@ -92,9 +115,9 @@ extension PlannedTripsViewController: UITableViewDelegate {
             // delete from core data
             DataHelper.sharedInstance.deleteTripWithObjectID(tripToDelete.objectID)
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            trips.removeAtIndex(indexPath.row)
             
-            trips = DataHelper.sharedInstance.fetchTrips()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
         }
         
     }

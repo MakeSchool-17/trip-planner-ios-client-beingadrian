@@ -12,6 +12,25 @@ import CoreData
 @objc(Waypoint)
 class Waypoint: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    convenience init(context: NSManagedObjectContext) {
+        
+        let entityDescription = NSEntityDescription.entityForName("WaypointEntity", inManagedObjectContext:
+            context)!
+        self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
+        
+    }
+    
+    convenience init(context: NSManagedObjectContext, jsonWaypointStruct: JSONWaypointStruct) {
+        
+        let entityDescription = NSEntityDescription.entityForName("WaypointEntity", inManagedObjectContext:
+            context)!
+        self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
+        
+        name = jsonWaypointStruct.name
+        longitude = jsonWaypointStruct.longitude
+        latitude = jsonWaypointStruct.latitude
+        id = jsonWaypointStruct.id
+        
+    }
 
 }

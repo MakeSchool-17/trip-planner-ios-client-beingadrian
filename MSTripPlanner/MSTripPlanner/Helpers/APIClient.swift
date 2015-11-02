@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import Gloss
 
+
+typealias GetTripsCallback = (jsonTripStructs: [JSONTripStruct]?) -> Void
 
 class APIClient {
     
@@ -62,28 +65,18 @@ class APIClient {
     
     func postTrip(trip: Trip) {
         
-        // create waypoint data
-        var waypointArray: [AnyObject] = []
-        for waypoint in trip.waypoints! {
-            
-            if let waypoint = waypoint as? Waypoint {
-                let dict: [String: AnyObject] = [
-                    "name": waypoint.name!,
-                    "longitude": waypoint.longitude!,
-                    "latitude": waypoint.latitude!,
-                    "trip": waypoint.trip!.name!
-                ]
-                
-                waypointArray.append(dict)
-            }
-            
+        // jsonify trip
+        var jsonWaypointStructs: [JSONWaypointStruct] = []
+        for waypoint in trip.waypoints!.array as! [Waypoint] {
+            let longitude = waypoint.longitude as! Double
+            let latitude = waypoint.latitude as! Double
+            let jsonWaypointStruct = JSONWaypointStruct(name: waypoint.name!, longitude: longitude, latitude: latitude, id: waypoint.id!)
+            jsonWaypointStructs.append(jsonWaypointStruct)
         }
         
-        // create trip data
-        let content: [String: AnyObject] = [
-            "name": trip.name!,
-            "waypoints": waypointArray
-        ]
+        let jsonTripStruct = JSONTripStruct(name: trip.name!, id: trip.id!, waypoints: jsonWaypointStructs)
+        let content = jsonTripStruct.toJSON()!
+        
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(content, options: NSJSONWritingOptions(rawValue: 0))
         
         // url settings
@@ -111,7 +104,7 @@ class APIClient {
         
     }
     
-    func getTrips() {
+    func getTrips(completion: GetTripsCallback) {
         
         // url settings 
         let url = NSURL(string: tripsURL)!
@@ -126,17 +119,25 @@ class APIClient {
         let getTask = session.dataTaskWithRequest(urlRequest) {
             (data, response, error) in
             
-            do {
-                let jsonOptional: AnyObject! = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
-                
-                print(jsonOptional.valueForKeyPath("name")!)
-                print(jsonOptional.valueForKeyPath("waypoints")!)
-                
-                if let json = jsonOptional! as? Dictionary<String, AnyObject> {
-                    print(json)
+            // TODO: Jsonification
+            
+            if let data = data {
+                do {
+                    let jsonArray = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as! [JSON]
+                    
+                    let jsonTripStructs = JSONTripStruct.modelsFromJSONArray(jsonArray)
+                    
+                    if let jsonTripStructs = jsonTripStructs {
+                        completion(jsonTripStructs: jsonTripStructs)
+                    } else {
+                        completion(jsonTripStructs: nil)
+                    }
+                    
+                } catch {
+                    fatalError("Error fetchng JSON object: \(error)")
                 }
-            } catch {
-                fatalError("Error fetchng JSON object: \(error)")
+            } else {
+                completion(jsonTripStructs: nil)
             }
             
         }

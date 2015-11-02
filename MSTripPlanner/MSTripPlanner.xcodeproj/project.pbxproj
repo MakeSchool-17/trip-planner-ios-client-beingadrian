@@ -34,6 +34,9 @@
 		338C04B81BDFEE90003D74C6 /* WaypointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C04B71BDFEE90003D74C6 /* WaypointCell.swift */; };
 		338C04BA1BDFF64E003D74C6 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C04B91BDFF64E003D74C6 /* PlaceCell.swift */; };
 		3395466D1BDEBA1700E0F10C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3395466C1BDEBA1700E0F10C /* MapKit.framework */; };
+		33D1D2A31BE7F728003DFE90 /* JSONTripStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1D2A21BE7F728003DFE90 /* JSONTripStruct.swift */; };
+		33D1D2A51BE7F78B003DFE90 /* JSONWaypointStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1D2A41BE7F78B003DFE90 /* JSONWaypointStruct.swift */; };
+		33D1D2A71BE80FDE003DFE90 /* Synchronization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1D2A61BE80FDE003DFE90 /* Synchronization.swift */; };
 		33FC21261BDAB23D00109565 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FC21251BDAB23D00109565 /* AddTripView.swift */; };
 		33FC21291BDAD42100109565 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FC21281BDAD42100109565 /* TripCell.swift */; };
 		6A5729427A7D02993E19F216 /* Pods_MSTripPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB88CF079F7C9AD6C234E47 /* Pods_MSTripPlanner.framework */; };
@@ -90,6 +93,9 @@
 		338C04B71BDFEE90003D74C6 /* WaypointCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointCell.swift; sourceTree = "<group>"; };
 		338C04B91BDFF64E003D74C6 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		3395466C1BDEBA1700E0F10C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		33D1D2A21BE7F728003DFE90 /* JSONTripStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTripStruct.swift; sourceTree = "<group>"; };
+		33D1D2A41BE7F78B003DFE90 /* JSONWaypointStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWaypointStruct.swift; sourceTree = "<group>"; };
+		33D1D2A61BE80FDE003DFE90 /* Synchronization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronization.swift; sourceTree = "<group>"; };
 		33FC21251BDAB23D00109565 /* AddTripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
 		33FC21281BDAD42100109565 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		AE9A965A89C656F4FBE7FE65 /* Pods-MSTripPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSTripPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSTripPlanner/Pods-MSTripPlanner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +184,7 @@
 		3358E7E71BD5AB630060C4CB /* MSTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				33D1D2A11BE7F70E003DFE90 /* Synchronization */,
 				33303FD41BE2E9A7007D4E20 /* Extensions */,
 				331F9F4D1BE13EA8009AC387 /* Decorators */,
 				33FC21271BDAD40B00109565 /* Cells */,
@@ -241,6 +248,16 @@
 				33FC21251BDAB23D00109565 /* AddTripView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		33D1D2A11BE7F70E003DFE90 /* Synchronization */ = {
+			isa = PBXGroup;
+			children = (
+				33D1D2A21BE7F728003DFE90 /* JSONTripStruct.swift */,
+				33D1D2A41BE7F78B003DFE90 /* JSONWaypointStruct.swift */,
+				33D1D2A61BE80FDE003DFE90 /* Synchronization.swift */,
+			);
+			path = Synchronization;
 			sourceTree = "<group>";
 		};
 		33F516B21BD8A58D00144DDC /* Models */ = {
@@ -469,15 +486,18 @@
 			files = (
 				331F9F5D1BE1B221009AC387 /* Trip.swift in Sources */,
 				3358E81A1BD5AC100060C4CB /* PlannedTripsViewController.swift in Sources */,
+				33D1D2A71BE80FDE003DFE90 /* Synchronization.swift in Sources */,
 				3358E7E91BD5AB630060C4CB /* AppDelegate.swift in Sources */,
 				338C04BA1BDFF64E003D74C6 /* PlaceCell.swift in Sources */,
 				331F9F551BE188CA009AC387 /* BarDecorator.swift in Sources */,
+				33D1D2A51BE7F78B003DFE90 /* JSONWaypointStruct.swift in Sources */,
 				331F9F4F1BE13EBB009AC387 /* MapViewDecorator.swift in Sources */,
 				33303FD61BE2E9BC007D4E20 /* StringExtensions.swift in Sources */,
 				33FC21261BDAB23D00109565 /* AddTripView.swift in Sources */,
 				33FC21291BDAD42100109565 /* TripCell.swift in Sources */,
 				331F9F5A1BE1B221009AC387 /* Waypoint+CoreDataProperties.swift in Sources */,
 				3358E8201BD5B3050060C4CB /* AddWaypointViewController.swift in Sources */,
+				33D1D2A31BE7F728003DFE90 /* JSONTripStruct.swift in Sources */,
 				332A1F0F1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld in Sources */,
 				3358E81E1BD5B2550060C4CB /* TripDetailViewController.swift in Sources */,
 				338C04B81BDFEE90003D74C6 /* WaypointCell.swift in Sources */,
