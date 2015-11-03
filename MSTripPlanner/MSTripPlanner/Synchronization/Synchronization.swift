@@ -16,16 +16,16 @@ class Synchronizer {
     func sync(callback: SyncCallback) {
         
         APIClient().getTrips() {
-            (jsonTripStructs) in
+            (serverTripStructs) in
             
             let coreDataTrips = DataHelper.sharedInstance.fetchTrips()
             
-            if let jsonTripStructs = jsonTripStructs {
+            if let serverTripStructs = serverTripStructs {
                 // post new core data trips
-                self.postNewCoreDataTrips(jsonTripStructs, coreDataTrips: coreDataTrips)
+                self.postNewCoreDataTrips(serverTripStructs, coreDataTrips: coreDataTrips)
                 
                 // get new server trips
-                self.getNewServerTrips(jsonTripStructs, coreDataTrips: coreDataTrips)
+                self.getNewServerTrips(serverTripStructs, coreDataTrips: coreDataTrips)
                 
                 let trips = DataHelper.sharedInstance.fetchTrips()
                 callback(trips: trips)
@@ -35,9 +35,9 @@ class Synchronizer {
         
     }
     
-    func postNewCoreDataTrips(jsonTripStructs: [JSONTripStruct], coreDataTrips: [Trip]) {
+    func postNewCoreDataTrips(serverTripStructs: [JSONTripStruct], coreDataTrips: [Trip]) {
         
-        let serverTripIDs = jsonTripStructs.map() { (jsonTripStruct) in jsonTripStruct.id! }
+        let serverTripIDs = serverTripStructs.map() { (jsonTripStruct) in jsonTripStruct.id! }
         let newCoreDataTrips = coreDataTrips.filter() {
             (coreDataTrip) in
             
@@ -52,10 +52,10 @@ class Synchronizer {
         
     }
     
-    func getNewServerTrips(jsonTripStructs: [JSONTripStruct], coreDataTrips: [Trip]) {
+    func getNewServerTrips(serverTripStructs: [JSONTripStruct], coreDataTrips: [Trip]) {
         
         let coreDataTripIDs = coreDataTrips.map() { (coreDataTrip) in coreDataTrip.id! }
-        let newServerTrips = jsonTripStructs.filter() {
+        let newServerTrips = serverTripStructs.filter() {
             (jsonTripStruct) in
             !coreDataTripIDs.contains(jsonTripStruct.id!)
         }
@@ -80,6 +80,27 @@ class Synchronizer {
         } catch {
             fatalError("Error saving new trips fetched from server: \(error)")
         }
+        
+    }
+    
+    func updateDeletedTrips(serverTripStructs: [JSONTripStruct], coreDataTrips: [Trip]) {
+        
+        let deletedTripsIDs = DataHelper.sharedInstance.deletedTripsIDs
+        
+        let tripsToDelete = serverTripStructs.filter() {
+            (serverTripStruct) in
+            
+            deletedTripsIDs.contains(serverTripStruct.id!)
+        }
+        
+        
+
+        
+    }
+    
+    func updateDeletedWaypoints() {
+        
+        // insert code here
         
     }
     

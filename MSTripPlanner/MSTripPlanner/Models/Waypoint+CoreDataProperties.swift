@@ -14,10 +14,11 @@ import CoreData
 
 extension Waypoint {
 
+    @NSManaged var id: String?
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
     @NSManaged var name: String?
-    @NSManaged var id: String?
+    @NSManaged var lastUpdate: NSDate?
     @NSManaged var trip: Trip?
 
 }

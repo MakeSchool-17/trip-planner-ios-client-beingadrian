@@ -15,25 +15,29 @@ struct JSONTripStruct: Glossy {
     let name: String?
     let id: String?
     let waypoints: [JSONWaypointStruct]?
+    let lastUpdate: NSDate?
     
     
-    init(name: String, id: String, waypoints: [JSONWaypointStruct]) {
+    init(name: String, id: String, waypoints: [JSONWaypointStruct], lastUpdate: NSDate) {
         self.name = name
         self.id = id
         self.waypoints = waypoints
+        self.lastUpdate = lastUpdate
     }
     
     init?(json: JSON) {
         self.name = "name" <~~ json
         self.id = "id" <~~ json
         self.waypoints = "waypoints" <~~ json
+        self.lastUpdate = "lastUpdate" <~~ json
     }
     
     func toJSON() -> JSON? {
         return jsonify([
             "name" ~~> self.name,
             "id" ~~> self.id,
-            "waypoints" ~~> self.waypoints
+            "waypoints" ~~> self.waypoints,
+            "lastUpdate" ~~> self.lastUpdate
         ])
     }
     

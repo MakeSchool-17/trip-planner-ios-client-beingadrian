@@ -31,6 +31,9 @@ class DataHelper {
     
     let moc = DataController().managedObjectContext
     
+    // deleted trips
+    var deletedTripsIDs: [String] = []
+    
     
     // MARK: - Trip methods
     
@@ -85,6 +88,8 @@ class DataHelper {
         
         // fetch trip to delete
         guard let tripToDelete = fetchTripWithObjectID(objectID) else { return }
+        
+        deletedTripsIDs.append(tripToDelete.id!)
         
         // delete trip
         moc.deleteObject(tripToDelete)

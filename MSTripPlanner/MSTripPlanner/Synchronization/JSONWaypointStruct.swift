@@ -16,13 +16,15 @@ struct JSONWaypointStruct: Glossy {
     let longitude: Double?
     let latitude: Double?
     let id: String?
+    let lastUpdate: NSDate?
     
     
-    init(name: String, longitude: Double, latitude: Double, id: String) {
+    init(name: String, longitude: Double, latitude: Double, id: String, lastUpdate: NSDate) {
         self.name = name
         self.longitude = longitude
         self.latitude = latitude
         self.id = id
+        self.lastUpdate = lastUpdate
     }
     
     init?(json: JSON) {
@@ -30,6 +32,7 @@ struct JSONWaypointStruct: Glossy {
         self.longitude = "longitude" <~~ json
         self.latitude = "latitude" <~~ json
         self.id = "id" <~~ json
+        self.lastUpdate = "lastUpdate" <~~ json
     }
     
     func toJSON() -> JSON? {
@@ -37,7 +40,8 @@ struct JSONWaypointStruct: Glossy {
             "name" ~~> self.name,
             "longitude" ~~> self.longitude,
             "latitude" ~~> self.latitude,
-            "id" ~~> self.id
+            "id" ~~> self.id,
+            "lastUpdate" ~~> self.lastUpdate
         ])
     }
     

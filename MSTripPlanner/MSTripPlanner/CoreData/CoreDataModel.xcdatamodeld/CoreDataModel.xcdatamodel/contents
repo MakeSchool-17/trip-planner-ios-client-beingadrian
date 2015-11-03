@@ -2,18 +2,20 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
     <entity name="TripEntity" representedClassName="Trip" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="waypoints" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="WaypointEntity" inverseName="trip" inverseEntity="WaypointEntity" syncable="YES"/>
     </entity>
     <entity name="WaypointEntity" representedClassName="Waypoint" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TripEntity" inverseName="waypoints" inverseEntity="TripEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TripEntity" positionX="-6068" positionY="-1737" width="128" height="90"/>
-        <element name="WaypointEntity" positionX="-5751" positionY="-1737" width="128" height="120"/>
+        <element name="TripEntity" positionX="-6068" positionY="-1737" width="128" height="105"/>
+        <element name="WaypointEntity" positionX="-5751" positionY="-1737" width="128" height="135"/>
     </elements>
 </model>

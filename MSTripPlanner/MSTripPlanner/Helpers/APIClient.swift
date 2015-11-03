@@ -70,11 +70,11 @@ class APIClient {
         for waypoint in trip.waypoints!.array as! [Waypoint] {
             let longitude = waypoint.longitude as! Double
             let latitude = waypoint.latitude as! Double
-            let jsonWaypointStruct = JSONWaypointStruct(name: waypoint.name!, longitude: longitude, latitude: latitude, id: waypoint.id!)
+            let jsonWaypointStruct = JSONWaypointStruct(name: waypoint.name!, longitude: longitude, latitude: latitude, id: waypoint.id!, lastUpdate: NSDate())
             jsonWaypointStructs.append(jsonWaypointStruct)
         }
         
-        let jsonTripStruct = JSONTripStruct(name: trip.name!, id: trip.id!, waypoints: jsonWaypointStructs)
+        let jsonTripStruct = JSONTripStruct(name: trip.name!, id: trip.id!, waypoints: jsonWaypointStructs, lastUpdate: NSDate())
         let content = jsonTripStruct.toJSON()!
         
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(content, options: NSJSONWritingOptions(rawValue: 0))
@@ -143,6 +143,31 @@ class APIClient {
         }
         
         getTask.resume()
+        
+    }
+    
+    func deleteTripWithID(tripID: String) {
+        
+        // url settings
+        let url = NSURL(string: tripsURL)!
+        
+        let urlRequest = NSMutableURLRequest(URL: url)
+        urlRequest.HTTPMethod = "DELETE"
+        urlRequest.setValue(authString, forHTTPHeaderField: "Authorization")
+        
+        // initiate session
+        let session = NSURLSession.sharedSession()
+        
+        let deleteTask = session.dataTaskWithRequest(urlRequest) {
+            (data, response, error) in
+            
+            
+            
+        }
+        
+        deleteTask.resume()
+        
+        
         
     }
     
