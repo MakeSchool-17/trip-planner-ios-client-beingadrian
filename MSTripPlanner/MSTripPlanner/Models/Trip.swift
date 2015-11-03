@@ -26,16 +26,10 @@ class Trip: NSManagedObject {
         let entityDescription = NSEntityDescription.entityForName("TripEntity", inManagedObjectContext:
             context)!
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
-        
-//        var waypointArray: [Waypoint] = []
-//        for jsonWaypointStruct in jsonTripStruct.waypoints! {
-//            let waypoint = Waypoint(context: context, jsonWaypointStruct: jsonWaypointStruct)
-//            waypointArray.append(waypoint)
-//        }
+    
         
         name = jsonTripStruct.name
         id = jsonTripStruct.id
-//        waypoints = NSOrderedSet(array: waypointArray)
         
     }
 

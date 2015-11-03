@@ -148,26 +148,6 @@ class DataHelper {
         
     }
     
-    func updateWaypointWithObjectID(objectID: NSManagedObjectID, name: String?, longitude: Float?, latitude: Float?) {
-        
-        guard let waypointToUpdate = fetchWaypointWithObjectID(objectID) else { return }
-        
-        // save data
-        if let name = name, let longitude = longitude, let latitude = latitude {
-            waypointToUpdate.name = name
-            waypointToUpdate.longitude = longitude
-            waypointToUpdate.latitude = latitude
-        }
-        
-        // save moc 
-        do {
-            try moc.save()
-        } catch {
-            fatalError("Failed to save context after updating waypoint: \(error)")
-        }
-        
-    }
-    
     func deleteWaypointWithID(objectID: NSManagedObjectID) {
         
         // fetch waypoint to delete
