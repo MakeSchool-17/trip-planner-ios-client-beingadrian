@@ -116,6 +116,9 @@ extension TripDetailViewController: UITableViewDelegate {
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
             
+            // update trip lastUpdated
+            trip.lastUpdate = NSDate()
+            
         }
         
     }

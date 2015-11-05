@@ -33,6 +33,7 @@ class DataHelper {
     
     // deleted trips
     var deletedTripsIDs: [String] = []
+    var lastSync: NSDate = NSDate()
     
     
     // MARK: - Trip methods
@@ -45,6 +46,7 @@ class DataHelper {
         // add data
         tripEntity.name = name
         tripEntity.id = String(ObjectIdentifier(tripEntity).uintValue)
+        tripEntity.lastUpdate = NSDate()
         
         // save entity
         do {

@@ -76,6 +76,8 @@ class PlannedTripsViewController: UIViewController {
             
             self.trips = trips
             
+            DataHelper.sharedInstance.lastSync = NSDate()
+            
             dispatch_sync(dispatch_get_main_queue()) {
                 self.plannedTripsTableView.reloadData()
             }

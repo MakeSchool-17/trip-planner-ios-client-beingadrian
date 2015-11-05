@@ -30,6 +30,7 @@ class Waypoint: NSManagedObject {
         longitude = jsonWaypointStruct.longitude
         latitude = jsonWaypointStruct.latitude
         id = jsonWaypointStruct.id
+        lastUpdate = jsonWaypointStruct.lastUpdate?.toNSDate()
         
     }
 

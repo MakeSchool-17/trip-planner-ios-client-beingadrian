@@ -11,6 +11,7 @@ import Foundation
 
 typealias SyncCallback = (trips: [Trip]) -> Void
 
+
 class Synchronizer {
     
     func sync(callback: SyncCallback) {
@@ -21,11 +22,16 @@ class Synchronizer {
             let coreDataTrips = DataHelper.sharedInstance.fetchTrips()
             
             if let serverTripStructs = serverTripStructs {
+                // update trips with updated waypoints (changed)
+                self.postUpdatedTrips()
+                
                 // post new core data trips
                 self.postNewCoreDataTrips(serverTripStructs, coreDataTrips: coreDataTrips)
                 
                 // get new server trips
                 self.getNewServerTrips(serverTripStructs, coreDataTrips: coreDataTrips)
+                
+                self.updateDeletedTrips(serverTripStructs)
                 
                 let trips = DataHelper.sharedInstance.fetchTrips()
                 callback(trips: trips)
@@ -57,9 +63,10 @@ class Synchronizer {
         let coreDataTripIDs = coreDataTrips.map() { (coreDataTrip) in coreDataTrip.id! }
         let newServerTrips = serverTripStructs.filter() {
             (jsonTripStruct) in
-            !coreDataTripIDs.contains(jsonTripStruct.id!)
+            
+            !coreDataTripIDs.contains(jsonTripStruct.id!) && !DataHelper.sharedInstance.deletedTripsIDs.contains(jsonTripStruct.id!)
         }
-        
+    
         let moc = DataHelper.sharedInstance.moc
         
         newServerTrips.forEach() {
@@ -83,7 +90,7 @@ class Synchronizer {
         
     }
     
-    func updateDeletedTrips(serverTripStructs: [JSONTripStruct], coreDataTrips: [Trip]) {
+    func updateDeletedTrips(serverTripStructs: [JSONTripStruct]) {
         
         let deletedTripsIDs = DataHelper.sharedInstance.deletedTripsIDs
         
@@ -93,18 +100,25 @@ class Synchronizer {
             deletedTripsIDs.contains(serverTripStruct.id!)
         }
         
-        
+        for trip in tripsToDelete {
+            APIClient().deleteTripWithID(trip.id!)
+        }
 
         
     }
     
-    func updateDeletedWaypoints() {
+    func postUpdatedTrips() {
         
-        // insert code here
+        let coreDataTrips = DataHelper.sharedInstance.fetchTrips()
+        
+        if coreDataTrips.count != 0 {
+            for trip in coreDataTrips {
+                if trip.lastUpdate!.isGreaterThanDate(DataHelper.sharedInstance.lastSync) {
+                    APIClient().putTrip(trip)
+                }
+            }
+        }
         
     }
-    
-    
-    
     
 }

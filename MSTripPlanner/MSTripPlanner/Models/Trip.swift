@@ -27,9 +27,9 @@ class Trip: NSManagedObject {
             context)!
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
     
-        
         name = jsonTripStruct.name
         id = jsonTripStruct.id
+        lastUpdate = jsonTripStruct.lastUpdate?.toNSDate()
         
     }
 

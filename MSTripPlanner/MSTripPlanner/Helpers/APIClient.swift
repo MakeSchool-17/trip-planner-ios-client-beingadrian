@@ -70,11 +70,11 @@ class APIClient {
         for waypoint in trip.waypoints!.array as! [Waypoint] {
             let longitude = waypoint.longitude as! Double
             let latitude = waypoint.latitude as! Double
-            let jsonWaypointStruct = JSONWaypointStruct(name: waypoint.name!, longitude: longitude, latitude: latitude, id: waypoint.id!, lastUpdate: NSDate())
+            let jsonWaypointStruct = JSONWaypointStruct(name: waypoint.name!, longitude: longitude, latitude: latitude, id: waypoint.id!, lastUpdate: NSDate().toString())
             jsonWaypointStructs.append(jsonWaypointStruct)
         }
         
-        let jsonTripStruct = JSONTripStruct(name: trip.name!, id: trip.id!, waypoints: jsonWaypointStructs, lastUpdate: NSDate())
+        let jsonTripStruct = JSONTripStruct(name: trip.name!, id: trip.id!, waypoints: jsonWaypointStructs, lastUpdate: NSDate().toString())
         let content = jsonTripStruct.toJSON()!
         
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(content, options: NSJSONWritingOptions(rawValue: 0))
@@ -119,8 +119,6 @@ class APIClient {
         let getTask = session.dataTaskWithRequest(urlRequest) {
             (data, response, error) in
             
-            // TODO: Jsonification
-            
             if let data = data {
                 do {
                     let jsonArray = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as! [JSON]
@@ -148,8 +146,8 @@ class APIClient {
     
     func deleteTripWithID(tripID: String) {
         
-        // url settings
-        let url = NSURL(string: tripsURL)!
+        // add trip id to the url ('/trips/ + tripID')
+        let url = NSURL(string: tripsURL+tripID)!
         
         let urlRequest = NSMutableURLRequest(URL: url)
         urlRequest.HTTPMethod = "DELETE"
@@ -161,13 +159,60 @@ class APIClient {
         let deleteTask = session.dataTaskWithRequest(urlRequest) {
             (data, response, error) in
             
-            
+            if let response = response as? NSHTTPURLResponse {
+                if response.statusCode == 200 {
+                    let deletedTripIDs = DataHelper.sharedInstance.deletedTripsIDs
+                    DataHelper.sharedInstance.deletedTripsIDs = deletedTripIDs.filter() {
+                        (deletedTripID) in
+                        
+                        !deletedTripIDs.contains(tripID)
+                    }
+                }
+            }
             
         }
         
         deleteTask.resume()
+    }
+    
+    func putTrip(trip: Trip) {
         
+        // jsonify trip
+        var jsonWaypointStructs: [JSONWaypointStruct] = []
+        for waypoint in trip.waypoints!.array as! [Waypoint] {
+            let longitude = waypoint.longitude as! Double
+            let latitude = waypoint.latitude as! Double
+            let jsonWaypointStruct = JSONWaypointStruct(name: waypoint.name!, longitude: longitude, latitude: latitude, id: waypoint.id!, lastUpdate: NSDate().toString())
+            jsonWaypointStructs.append(jsonWaypointStruct)
+        }
         
+        let jsonTripStruct = JSONTripStruct(name: trip.name!, id: trip.id!, waypoints: jsonWaypointStructs, lastUpdate: NSDate().toString())
+        let content = jsonTripStruct.toJSON()!
+        
+        let jsonData = try! NSJSONSerialization.dataWithJSONObject(content, options: NSJSONWritingOptions(rawValue: 0))
+        
+        // add trip id to the url ('/trips/ + tripID')
+        let url = NSURL(string: tripsURL+trip.id!)!
+        
+        let urlRequest = NSMutableURLRequest(URL: url)
+        urlRequest.HTTPMethod = "PUT"
+        urlRequest.HTTPBody = jsonData
+        urlRequest.setValue("application/json", forHTTPHeaderField: "content-type")
+        urlRequest.setValue(authString, forHTTPHeaderField: "Authorization")
+        
+        // initiate session
+        let session = NSURLSession.sharedSession()
+        
+        let postTask = session.dataTaskWithRequest(urlRequest) {
+            (data, response, error) in
+            
+            if let response = response {
+                print(response)
+            }
+            
+        }
+        
+        postTask.resume()
         
     }
     

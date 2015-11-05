@@ -16,10 +16,10 @@ struct JSONWaypointStruct: Glossy {
     let longitude: Double?
     let latitude: Double?
     let id: String?
-    let lastUpdate: NSDate?
+    let lastUpdate: String?
     
     
-    init(name: String, longitude: Double, latitude: Double, id: String, lastUpdate: NSDate) {
+    init(name: String, longitude: Double, latitude: Double, id: String, lastUpdate: String) {
         self.name = name
         self.longitude = longitude
         self.latitude = latitude

@@ -15,7 +15,7 @@ class AddTripView: UIView {
 
     @IBOutlet weak var textField: UITextField!
     
-    var delegate: AddTripUIViewDelegate?
+    weak var delegate: AddTripUIViewDelegate?
     
     
     // MARK: - Actions
@@ -30,7 +30,7 @@ class AddTripView: UIView {
 
 }
 
-protocol AddTripUIViewDelegate {
+protocol AddTripUIViewDelegate: class {
     
     func textInputIsValid(addTripView: AddTripView, isValid: Bool) -> Void
     

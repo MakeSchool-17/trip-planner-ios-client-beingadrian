@@ -18,7 +18,7 @@
 		332A1F0F1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332A1F0D1BD6F505004FA8A6 /* CoreDataModel.xcdatamodeld */; };
 		332A1F111BD6F5A6004FA8A6 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A1F101BD6F5A6004FA8A6 /* DataController.swift */; };
 		33303FC01BE2E54F007D4E20 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33303FBF1BE2E54F007D4E20 /* APIClient.swift */; };
-		33303FD61BE2E9BC007D4E20 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33303FD51BE2E9BC007D4E20 /* StringExtensions.swift */; };
+		33303FD61BE2E9BC007D4E20 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33303FD51BE2E9BC007D4E20 /* Extensions.swift */; };
 		334FC03B1BD8C1EA0094CA5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FC03A1BD8C1EA0094CA5B /* DataHelper.swift */; };
 		3358E7E91BD5AB630060C4CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358E7E81BD5AB630060C4CB /* AppDelegate.swift */; };
 		3358E7EE1BD5AB630060C4CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3358E7EC1BD5AB630060C4CB /* Main.storyboard */; };
@@ -71,7 +71,7 @@
 		332A1F0E1BD6F505004FA8A6 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		332A1F101BD6F5A6004FA8A6 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		33303FBF1BE2E54F007D4E20 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		33303FD51BE2E9BC007D4E20 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		33303FD51BE2E9BC007D4E20 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		334FC03A1BD8C1EA0094CA5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		3358E7E51BD5AB630060C4CB /* MSTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3358E7E81BD5AB630060C4CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		33303FD41BE2E9A7007D4E20 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				33303FD51BE2E9BC007D4E20 /* StringExtensions.swift */,
+				33303FD51BE2E9BC007D4E20 /* Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -492,7 +492,7 @@
 				331F9F551BE188CA009AC387 /* BarDecorator.swift in Sources */,
 				33D1D2A51BE7F78B003DFE90 /* JSONWaypointStruct.swift in Sources */,
 				331F9F4F1BE13EBB009AC387 /* MapViewDecorator.swift in Sources */,
-				33303FD61BE2E9BC007D4E20 /* StringExtensions.swift in Sources */,
+				33303FD61BE2E9BC007D4E20 /* Extensions.swift in Sources */,
 				33FC21261BDAB23D00109565 /* AddTripView.swift in Sources */,
 				33FC21291BDAD42100109565 /* TripCell.swift in Sources */,
 				331F9F5A1BE1B221009AC387 /* Waypoint+CoreDataProperties.swift in Sources */,
