@@ -67,6 +67,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Planned Trips" id="xGv-R3-B8W">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Sob-HL-Xha">
+                            <connections>
+                                <action selector="refreshBarButtonPressed:" destination="BYZ-38-t0r" id="nzV-J6-neu"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cYK-KO-G9h" userLabel="Add Button">
                             <connections>
                                 <action selector="addBarButtonPressed:" destination="BYZ-38-t0r" id="IID-sH-FiP"/>
@@ -307,6 +312,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="uK1-ZZ-e74">
                                             <connections>
                                                 <action selector="saveBarButtonPressed:" destination="8T0-xo-7Q7" id="jcc-pR-X5A"/>
+                                                <segue destination="TGC-sv-oYe" kind="show" id="aoP-h4-ZIr"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -396,6 +402,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBG-oi-7Sn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1792.5" y="629.5"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="XhE-LN-36U">
+            <objects>
+                <viewControllerPlaceholder id="TGC-sv-oYe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iR5-96-Rvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2204.5" y="727"/>
         </scene>
         <!--Waypoint View Controller-->
         <scene sceneID="1Me-oW-3jH">

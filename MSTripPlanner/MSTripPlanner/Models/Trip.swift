@@ -9,9 +9,28 @@
 import Foundation
 import CoreData
 
+
 @objc(Trip)
 class Trip: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    convenience init(context: NSManagedObjectContext) {
+        
+        let entityDescription = NSEntityDescription.entityForName("TripEntity", inManagedObjectContext:
+            context)!
+        self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
+        
+    }
+    
+    convenience init(context: NSManagedObjectContext, jsonTripStruct: JSONTripStruct) {
+        
+        let entityDescription = NSEntityDescription.entityForName("TripEntity", inManagedObjectContext:
+            context)!
+        self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
+    
+        name = jsonTripStruct.name
+        id = jsonTripStruct.id
+        lastUpdate = jsonTripStruct.lastUpdate?.toNSDate()
+        
+    }
 
 }

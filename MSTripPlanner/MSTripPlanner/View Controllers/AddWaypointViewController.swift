@@ -87,6 +87,9 @@ class AddWaypointViewController: UIViewController {
                 let associatedTrip = DataHelper.sharedInstance.fetchTripWithObjectID(trip.objectID)
                 waypoint.trip = associatedTrip
                 
+                // update lastUpdated trip property
+                trip.lastUpdate = NSDate()
+                
                 do {
                     try DataHelper.sharedInstance.moc.save()
                 } catch {

@@ -1,10 +1,13 @@
 PODS:
+  - Gloss (0.6.0)
   - GoogleMaps (1.10.5)
 
 DEPENDENCIES:
+  - Gloss (~> 0.6)
   - GoogleMaps
 
 SPEC CHECKSUMS:
+  Gloss: 59f0b10942c523791cfbbfa882052fd9e87fe94a
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
 
 COCOAPODS: 0.39.0

@@ -43,6 +43,7 @@ class TripDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         // update waypoints array after adding waypoint
+        waypoints = trip.waypoints?.array as! [Waypoint]
         waypointsTableView.reloadData()
         
     }
@@ -114,6 +115,9 @@ extension TripDetailViewController: UITableViewDelegate {
             waypoints = trip.waypoints?.array as! [Waypoint]
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            
+            // update trip lastUpdated
+            trip.lastUpdate = NSDate()
             
         }
         

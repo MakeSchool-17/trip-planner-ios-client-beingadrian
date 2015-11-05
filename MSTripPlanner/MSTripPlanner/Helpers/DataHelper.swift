@@ -31,6 +31,10 @@ class DataHelper {
     
     let moc = DataController().managedObjectContext
     
+    // deleted trips
+    var deletedTripsIDs: [String] = []
+    var lastSync: NSDate = NSDate()
+    
     
     // MARK: - Trip methods
     
@@ -40,7 +44,9 @@ class DataHelper {
         let tripEntity = NSEntityDescription.insertNewObjectForEntityForName(TripEntityName, inManagedObjectContext: moc) as! Trip
         
         // add data
-        tripEntity.setValue(name, forKey: TripNameKey)
+        tripEntity.name = name
+        tripEntity.id = String(ObjectIdentifier(tripEntity).uintValue)
+        tripEntity.lastUpdate = NSDate()
         
         // save entity
         do {
@@ -85,6 +91,8 @@ class DataHelper {
         // fetch trip to delete
         guard let tripToDelete = fetchTripWithObjectID(objectID) else { return }
         
+        deletedTripsIDs.append(tripToDelete.id!)
+        
         // delete trip
         moc.deleteObject(tripToDelete)
         
@@ -106,6 +114,7 @@ class DataHelper {
         waypointEntity.name = name
         waypointEntity.latitude = latitude
         waypointEntity.longitude = longitude
+        waypointEntity.id = String(ObjectIdentifier(waypointEntity).uintValue)
         
         // save entity
         do {
@@ -142,26 +151,6 @@ class DataHelper {
             return fetchedWaypoints
         } catch {
             fatalError("Failed to fetch waypoints: \(error)")
-        }
-        
-    }
-    
-    func updateWaypointWithObjectID(objectID: NSManagedObjectID, name: String?, longitude: Float?, latitude: Float?) {
-        
-        guard let waypointToUpdate = fetchWaypointWithObjectID(objectID) else { return }
-        
-        // save data
-        if let name = name, let longitude = longitude, let latitude = latitude {
-            waypointToUpdate.name = name
-            waypointToUpdate.longitude = longitude
-            waypointToUpdate.latitude = latitude
-        }
-        
-        // save moc 
-        do {
-            try moc.save()
-        } catch {
-            fatalError("Failed to save context after updating waypoint: \(error)")
         }
         
     }

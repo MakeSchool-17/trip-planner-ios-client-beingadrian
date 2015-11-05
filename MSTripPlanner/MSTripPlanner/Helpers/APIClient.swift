@@ -7,23 +7,34 @@
 //
 
 import Foundation
+import Gloss
 
+
+typealias GetTripsCallback = (jsonTripStructs: [JSONTripStruct]?) -> Void
 
 class APIClient {
     
     // MARK: Properties
     
-    static let urlString = "http://127.0.0.1:5000/"
-    static let usersURL = urlString + "users/"
-    static let tripsURL = urlString + "trips/"
+    let urlString: String
+    let usersURL: String
+    let tripsURL: String
     
     // authorization
-    static let authString = "Basic " + "beingadrian:abc123".toBase64()
+    let authString = "Basic " + "beingadrian:abc123".toBase64()
     
+    // initialization
+    init() {
+        
+        self.urlString = "http://127.0.0.1:5000/"
+        self.usersURL = self.urlString + "users/"
+        self.tripsURL = self.urlString + "trips/"
+
+    }
     
     // MARK: Methods
     
-    static func postUser(username: String, password: String) {
+    func postUser(username: String, password: String) {
 
         // jsonify user data
         let content = ["username": username, "password": password]
@@ -52,30 +63,20 @@ class APIClient {
         
     }
     
-    static func postTrip(trip: Trip) {
+    func postTrip(trip: Trip) {
         
-        // create waypoint data
-        var waypointArray: [AnyObject] = []
-        for waypoint in trip.waypoints! {
-            
-            if let waypoint = waypoint as? Waypoint {
-                let dict: [String: AnyObject] = [
-                    "name": waypoint.name!,
-                    "longitude": waypoint.longitude!,
-                    "latitude": waypoint.latitude!,
-                    "trip": waypoint.trip!.name!
-                ]
-                
-                waypointArray.append(dict)
-            }
-            
+        // jsonify trip
+        var jsonWaypointStructs: [JSONWaypointStruct] = []
+        for waypoint in trip.waypoints!.array as! [Waypoint] {
+            let longitude = waypoint.longitude as! Double
+            let latitude = waypoint.latitude as! Double
+            let jsonWaypointStruct = JSONWaypointStruct(name: waypoint.name!, longitude: longitude, latitude: latitude, id: waypoint.id!, lastUpdate: NSDate().toString())
+            jsonWaypointStructs.append(jsonWaypointStruct)
         }
         
-        // create trip data
-        let content: [String: AnyObject] = [
-            "name": trip.name!,
-            "waypoints": waypointArray
-        ]
+        let jsonTripStruct = JSONTripStruct(name: trip.name!, id: trip.id!, waypoints: jsonWaypointStructs, lastUpdate: NSDate().toString())
+        let content = jsonTripStruct.toJSON()!
+        
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(content, options: NSJSONWritingOptions(rawValue: 0))
         
         // url settings
@@ -103,7 +104,7 @@ class APIClient {
         
     }
     
-    static func getTrips() {
+    func getTrips(completion: GetTripsCallback) {
         
         // url settings 
         let url = NSURL(string: tripsURL)!
@@ -118,22 +119,100 @@ class APIClient {
         let getTask = session.dataTaskWithRequest(urlRequest) {
             (data, response, error) in
             
-            do {
-                let jsonOptional: AnyObject! = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
-                
-                print(jsonOptional.valueForKeyPath("name")!)
-                print(jsonOptional.valueForKeyPath("waypoints")!)
-                
-                if let json = jsonOptional! as? Dictionary<String, AnyObject> {
-                    print(json)
+            if let data = data {
+                do {
+                    let jsonArray = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as! [JSON]
+                    
+                    let jsonTripStructs = JSONTripStruct.modelsFromJSONArray(jsonArray)
+                    
+                    if let jsonTripStructs = jsonTripStructs {
+                        completion(jsonTripStructs: jsonTripStructs)
+                    } else {
+                        completion(jsonTripStructs: nil)
+                    }
+                    
+                } catch {
+                    fatalError("Error fetchng JSON object: \(error)")
                 }
-            } catch {
-                fatalError("Error fetchng JSON object: \(error)")
+            } else {
+                completion(jsonTripStructs: nil)
             }
             
         }
         
         getTask.resume()
+        
+    }
+    
+    func deleteTripWithID(tripID: String) {
+        
+        // add trip id to the url ('/trips/ + tripID')
+        let url = NSURL(string: tripsURL+tripID)!
+        
+        let urlRequest = NSMutableURLRequest(URL: url)
+        urlRequest.HTTPMethod = "DELETE"
+        urlRequest.setValue(authString, forHTTPHeaderField: "Authorization")
+        
+        // initiate session
+        let session = NSURLSession.sharedSession()
+        
+        let deleteTask = session.dataTaskWithRequest(urlRequest) {
+            (data, response, error) in
+            
+            if let response = response as? NSHTTPURLResponse {
+                if response.statusCode == 200 {
+                    let deletedTripIDs = DataHelper.sharedInstance.deletedTripsIDs
+                    DataHelper.sharedInstance.deletedTripsIDs = deletedTripIDs.filter() {
+                        (deletedTripID) in
+                        
+                        !deletedTripIDs.contains(tripID)
+                    }
+                }
+            }
+            
+        }
+        
+        deleteTask.resume()
+    }
+    
+    func putTrip(trip: Trip) {
+        
+        // jsonify trip
+        var jsonWaypointStructs: [JSONWaypointStruct] = []
+        for waypoint in trip.waypoints!.array as! [Waypoint] {
+            let longitude = waypoint.longitude as! Double
+            let latitude = waypoint.latitude as! Double
+            let jsonWaypointStruct = JSONWaypointStruct(name: waypoint.name!, longitude: longitude, latitude: latitude, id: waypoint.id!, lastUpdate: NSDate().toString())
+            jsonWaypointStructs.append(jsonWaypointStruct)
+        }
+        
+        let jsonTripStruct = JSONTripStruct(name: trip.name!, id: trip.id!, waypoints: jsonWaypointStructs, lastUpdate: NSDate().toString())
+        let content = jsonTripStruct.toJSON()!
+        
+        let jsonData = try! NSJSONSerialization.dataWithJSONObject(content, options: NSJSONWritingOptions(rawValue: 0))
+        
+        // add trip id to the url ('/trips/ + tripID')
+        let url = NSURL(string: tripsURL+trip.id!)!
+        
+        let urlRequest = NSMutableURLRequest(URL: url)
+        urlRequest.HTTPMethod = "PUT"
+        urlRequest.HTTPBody = jsonData
+        urlRequest.setValue("application/json", forHTTPHeaderField: "content-type")
+        urlRequest.setValue(authString, forHTTPHeaderField: "Authorization")
+        
+        // initiate session
+        let session = NSURLSession.sharedSession()
+        
+        let postTask = session.dataTaskWithRequest(urlRequest) {
+            (data, response, error) in
+            
+            if let response = response {
+                print(response)
+            }
+            
+        }
+        
+        postTask.resume()
         
     }
     
